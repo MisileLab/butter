@@ -20,7 +20,9 @@ dependencies = [
   "langchain-openai==0.1.21",
   "pillow==10.4.0",
   "binaryornot==0.4.4",
-  "mem0ai==0.0.17"
+  "mem0ai==0.0.17",
+  "torch-directml==0.2.3.dev240715; sys_platform == 'win32'",
+  "rvc-python==0.0.7",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"
@@ -34,3 +36,7 @@ dev = [
   "python-lsp-server==1.11.0",
   "ruff-lsp==0.0.54",
 ]
+
+[tool.pdm.resolution.overrides]
+fairseq = "git+https://github.com/liyaodev/fairseq.git" # https://github.com/facebookresearch/fairseq/issues/5012
+omegaconf = ">=2.3.0"
