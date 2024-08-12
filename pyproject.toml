@@ -20,9 +20,9 @@ dependencies = [
   "langchain-openai==0.1.21",
   "pillow==10.4.0",
   "binaryornot==0.4.4",
-  "mem0ai==0.0.16",
+  "mem0ai==0.0.17"
 ]
-requires-python = "==3.12.4"
+requires-python = "==3.11.*"
 readme = "README.md"
 license = {text = "MisileLab License"}
 

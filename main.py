@@ -16,6 +16,7 @@ from base64 import b64encode
 from datetime import datetime
 from copy import deepcopy
 from typing import Any
+from sys import argv
 
 try:
   user # type: ignore
@@ -202,4 +203,4 @@ with gr.Blocks() as frontend:
     memory_delete.click(lambda: delete_memory(temp["memory_id"]))
   frontend.load(lambda: [user, prompt, middle_prompt, summarize_prompt], None, [user_input, prompt_input, middle_prompt_input, summarize_prompt_input])
 
-frontend.launch(show_error=True, show_api=True, auth=(config['auth']['id'], config['auth']['password']), server_name='0.0.0.0')
+frontend.launch(show_error=True, show_api=True, share=config.__getitem__("share", True))
