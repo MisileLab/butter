@@ -125,7 +125,8 @@ def convert_to_real_content(content_text, content_files, voice, user):
         raise gr.Error("File is not an image file") from exc
   if voice is not None and voice != "":
     logger.info(voice)
-    result += f"\naudio: {whisper.audio.transcriptions.create(file=open(voice, "rb"), model="whisper-1").text}"
+    res = whisper.audio.transcriptions.create(file=open(voice, "rb"), model="whisper-1").text
+    result += f"\naudio: {res}"
   if content_text != "":
     result += f"\n{content_text}"
   logger.debug(len(content_files))
@@ -169,27 +170,27 @@ async def generate_message(content, _):
         func_response = f(**i["args"])
       func_response = str(func_response)
       messages.append(ToolMessage(tool_call_id=i["id"], content=func_response))
-    logger.debug('chat part ended, do audio')
-    google_voice = generate_voice(messages[-1].content)
-    logger.debug(google_voice)
-    res = infer_file(
-      input_path = google_voice,
-      model_path = "./model/model.pth",
-      index_path = "./model/model.index",
-      device = device,
-      f0method = "rmvpe",
-      f0up_key = 2,
-      output = tempfile.mktemp(), # type: ignore output parameter in docs
-      index_rate = 0.5,
-      filter_radius = 3,
-      resample_sr = 0,
-      rms_mix_rate = 0.25,
-      protect = 0.33,
-      version = "v1"
-    )
-    logger.debug("cleanup original one")
-    remove(google_voice)
-    yield gr.Audio(res)
+  logger.debug('chat part ended, do audio')
+  google_voice = generate_voice(messages[-1].content)
+  logger.debug(google_voice)
+  res = infer_file(
+    input_path = google_voice,
+    model_path = "./model/model.pth",
+    index_path = "./model/model.index",
+    device = device,
+    f0method = "rmvpe",
+    f0up_key = 2,
+    opt_path = tempfile.mktemp(), # type: ignore output parameter in docs
+    index_rate = 0.5,
+    filter_radius = 3,
+    resample_sr = 0,
+    rms_mix_rate = 0.25,
+    protect = 0.33,
+    version = "v1"
+  )
+  logger.debug("cleanup original one")
+  remove(google_voice)
+  yield gr.Audio(res)
   if len(messages) >= 70:
     tmp_messages = messages[1:60]
     while tmp_messages[-1].__class__ in [ToolMessage, HumanMessage]:

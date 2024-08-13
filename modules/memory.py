@@ -3,19 +3,11 @@ from .config import api_key, config
 
 from pydantic import BaseModel, Field
 from mem0 import Memory
-from loguru import logger
 
 from os import environ
 from typing import Callable
 
 mem0_config = {
-  "vector_store": {
-    "provider": "qdrant",
-    "config": {
-      "host": config['qdrant']['host'],
-      "port": config['qdrant']['port']
-    }
-  },
   "llm": {
     "provider": "openai",
     "config": {
