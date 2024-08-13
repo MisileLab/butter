@@ -21,10 +21,10 @@ dependencies = [
   "pillow==10.4.0",
   "binaryornot==0.4.4",
   "mem0ai==0.0.17",
-  "torch-directml==0.2.3.dev240715; sys_platform == 'win32'",
   "rvc-python==0.0.7",
-  "google-cloud-texttospeech==2.16.5",
+  "google-cloud-texttospeech==2.16.5"
 ]
+optional-dependencies = { "wsl" = ["torch-directml==0.2.3.dev240715"] }
 requires-python = "~=3.12.4"
 readme = "README.md"
 license = {text = "MisileLab License"}
@@ -42,3 +42,4 @@ dev = [
 fairseq = "git+https://github.com/liyaodev/fairseq.git" # https://github.com/facebookresearch/fairseq/issues/5012
 omegaconf = ">=2.3.0"
 numpy = ">=1.25.3"
+faiss-cpu = "==1.7.2" # https://github.com/facebookresearch/faiss/issues/1560
