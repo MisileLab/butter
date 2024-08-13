@@ -1,4 +1,5 @@
 from inspect import iscoroutinefunction
+from os import remove
 from modules.llm_function import middle_prompt, llm_mini
 from modules.llm import api_key, llm, functions, middle_converting_functions
 from modules.memory import print_it, save_memory, get_all_memories, update_memory, delete_memory
@@ -10,18 +11,60 @@ from loguru import logger
 from PIL import Image
 from openai import OpenAI
 from binaryornot.check import is_binary
+from google.cloud import texttospeech
+from rvc_python.infer import infer_file
 
 from pathlib import Path
 from base64 import b64encode
 from datetime import datetime
 from copy import deepcopy
 from typing import Any
-from sys import argv
+import tempfile
+
+# its ai generated function, and should be working please
+@print_it
+def generate_voice(content):
+  # Initialize a Text-to-Speech client
+  client = texttospeech.TextToSpeechClient(client_options={"api_key": config["ai"]["google_tts"]})
+
+  # Prepare the input text
+  input_text = texttospeech.SynthesisInput(text=content)
+
+  # Choose the type and language of the voice
+  voice = texttospeech.VoiceSelectionParams(
+    language_code="ko-KR",
+    name="ko-KR-neural2-A",
+    ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
+  )
+
+  # Set the audio encoding and sample rate
+  audio_config = texttospeech.AudioConfig(
+    audio_encoding=texttospeech.AudioEncoding.MP3,
+    sample_rate_hertz=16000
+  )
+
+  # Synthesize the speech
+  response = client.synthesize_speech(
+    input=input_text, voice=voice, audio_config=audio_config
+  )
+
+  # Create a temporary file and write the audio content to it
+  _, temp_file_path = tempfile.mkstemp(suffix=".mp3")
+  with open(temp_file_path, "wb") as out:
+    out.write(response.audio_content)
+
+  return temp_file_path
 
 try:
   user # type: ignore
 except NameError:
   # first launch before gradio reload
+  try:
+    import torch_directml # type: ignore
+    device = torch_directml.device()
+  except ImportError:
+    logger.warning("directml isnt avaliable, fallback to cpu")
+    device = "cpu"
   user = ""
   prompt = Path("./prompts/prompt").read_text()
   summarize_prompt = Path("./prompts/summarize_prompt").read_text()
@@ -34,7 +77,8 @@ except NameError:
     "memory_user": "",
     "user": "",
     "voice": "",
-    "files": []
+    "files": [],
+    "tts": ""
   }
   messages: list[SystemMessage | AIMessage | ToolMessage | HumanMessage] = [SystemMessage(prompt)]
   whisper = OpenAI(api_key=api_key)
@@ -125,6 +169,27 @@ async def generate_message(content, _):
         func_response = f(**i["args"])
       func_response = str(func_response)
       messages.append(ToolMessage(tool_call_id=i["id"], content=func_response))
+    logger.debug('chat part ended, do audio')
+    google_voice = generate_voice(messages[-1].content)
+    logger.debug(google_voice)
+    res = infer_file(
+      input_path = google_voice,
+      model_path = "./model/model.pth",
+      index_path = "./model/model.index",
+      device = device,
+      f0method = "rmvpe",
+      f0up_key = 2,
+      output = tempfile.mktemp(), # type: ignore output parameter in docs
+      index_rate = 0.5,
+      filter_radius = 3,
+      resample_sr = 0,
+      rms_mix_rate = 0.25,
+      protect = 0.33,
+      version = "v1"
+    )
+    logger.debug("cleanup original one")
+    remove(google_voice)
+    yield gr.Audio(res)
   if len(messages) >= 70:
     tmp_messages = messages[1:60]
     while tmp_messages[-1].__class__ in [ToolMessage, HumanMessage]:
@@ -203,4 +268,4 @@ with gr.Blocks() as frontend:
     memory_delete.click(lambda: delete_memory(temp["memory_id"]))
   frontend.load(lambda: [user, prompt, middle_prompt, summarize_prompt], None, [user_input, prompt_input, middle_prompt_input, summarize_prompt_input])
 
-frontend.launch(show_error=True, show_api=True, share=config.__getitem__("share", True))
+frontend.launch(show_error=True, show_api=True, share=config.get("share", True))
