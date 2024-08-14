@@ -13,6 +13,7 @@ from openai import OpenAI
 from binaryornot.check import is_binary
 from google.cloud import texttospeech
 from rvc_python.infer import infer_file
+from torch.cuda import is_available
 
 from pathlib import Path
 from base64 import b64encode
@@ -59,12 +60,9 @@ try:
   user # type: ignore
 except NameError:
   # first launch before gradio reload
-  try:
-    import torch_directml # type: ignore
-    device = torch_directml.device()
-  except ImportError:
-    logger.warning("directml isnt avaliable, fallback to cpu")
-    device = "cpu"
+  device = "cuda:0" if is_available() else "cpu"
+  if device == "cpu":
+    logger.warning("we're fallback to cpu")
   user = ""
   prompt = Path("./prompts/prompt").read_text()
   summarize_prompt = Path("./prompts/summarize_prompt").read_text()
@@ -178,7 +176,7 @@ async def generate_message(content, _):
     model_path = "./model/model.pth",
     index_path = "./model/model.index",
     device = device,
-    f0method = "rmvpe",
+    f0method = "harvest",
     f0up_key = 2,
     opt_path = tempfile.mktemp(), # type: ignore output parameter in docs
     index_rate = 0.5,
