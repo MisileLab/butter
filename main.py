@@ -13,14 +13,12 @@ from openai import OpenAI
 from binaryornot.check import is_binary
 from google.cloud import texttospeech
 from rvc_python.infer import infer_file
-from playsound import playsound
 
 from pathlib import Path
 from base64 import b64encode
 from datetime import datetime
 from copy import deepcopy
 from typing import Any
-from sys import platform
 import tempfile
 
 # its ai generated function, and should be working please
@@ -158,7 +156,8 @@ async def generate_message(content, _):
     if len(gathered.tool_calls) == 0: # type: ignore gathered is ai's message
       break
     for i in gathered.tool_calls: # type: ignore gathered is ai's message
-      logger.info(f"calling {i["name"]}")
+      nametmp = i["name"]
+      logger.info(f"calling {nametmp}")
       f = middle_converting_functions[functions[i["name"]]]
       if iscoroutinefunction(f):
         func_response = await f(**i["args"])
@@ -172,8 +171,8 @@ async def generate_message(content, _):
   res = infer_file(
     input_path = google_voice,
     model_path = "./model/model.pth",
-#    index_path = "./model/model.index",
-    f0method = "rmvpe",
+    index_path = "./model/model.index",
+    f0method = "harvest",
     f0up_key = 2,
     opt_path = tempfile.mktemp(),
     index_rate = 0.5,
@@ -181,12 +180,12 @@ async def generate_message(content, _):
     resample_sr = 0,
     rms_mix_rate = 0.25, # type: ignore
     protect = 0.33,
-    version = "v2"
+    version = "v1"
   )
   logger.debug("cleanup original one")
   remove(google_voice)
   logger.debug(f"result: {res}")
-  playsound(res)
+  yield gr.Audio(res, autoplay=True)
   if len(messages) >= 70:
     tmp_messages = messages[1:60]
     while tmp_messages[-1].__class__ in [ToolMessage, HumanMessage]:
