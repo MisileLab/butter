@@ -13,13 +13,14 @@ from openai import OpenAI
 from binaryornot.check import is_binary
 from google.cloud import texttospeech
 from rvc_python.infer import infer_file
-from torch.cuda import is_available
+from playsound import playsound
 
 from pathlib import Path
 from base64 import b64encode
 from datetime import datetime
 from copy import deepcopy
 from typing import Any
+from sys import platform
 import tempfile
 
 # its ai generated function, and should be working please
@@ -60,9 +61,6 @@ try:
   user # type: ignore
 except NameError:
   # first launch before gradio reload
-  device = "cuda:0" if is_available() else "cpu"
-  if device == "cpu":
-    logger.warning("we're fallback to cpu")
   user = ""
   prompt = Path("./prompts/prompt").read_text()
   summarize_prompt = Path("./prompts/summarize_prompt").read_text()
@@ -174,21 +172,21 @@ async def generate_message(content, _):
   res = infer_file(
     input_path = google_voice,
     model_path = "./model/model.pth",
-    index_path = "./model/model.index",
-    device = device,
-    f0method = "harvest",
+#    index_path = "./model/model.index",
+    f0method = "rmvpe",
     f0up_key = 2,
-    opt_path = tempfile.mktemp(), # type: ignore output parameter in docs
+    opt_path = tempfile.mktemp(),
     index_rate = 0.5,
     filter_radius = 3,
     resample_sr = 0,
-    rms_mix_rate = 0.25,
+    rms_mix_rate = 0.25, # type: ignore
     protect = 0.33,
-    version = "v1"
+    version = "v2"
   )
   logger.debug("cleanup original one")
   remove(google_voice)
-  yield gr.Audio(res)
+  logger.debug(f"result: {res}")
+  playsound(res)
   if len(messages) >= 70:
     tmp_messages = messages[1:60]
     while tmp_messages[-1].__class__ in [ToolMessage, HumanMessage]:
