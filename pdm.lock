@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:7f30eb97ae203a67e562d500c22375351d39bdb81a5b9d8d9270462e74c24344"
+content_hash = "sha256:7bbac6b67487339a33fdfb7585b7a577c0e48c1dd700da8007bbc61871f8c0b9"
 
 [[metadata.targets]]
 requires_python = "~=3.12.4"
@@ -529,7 +529,7 @@ files = [
 
 [[package]]
 name = "duckduckgo-search"
-version = "6.2.7"
+version = "6.2.8"
 requires_python = ">=3.8"
 summary = "Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine."
 groups = ["default"]
@@ -538,8 +538,8 @@ dependencies = [
     "primp>=0.5.5",
 ]
 files = [
-    {file = "duckduckgo_search-6.2.7-py3-none-any.whl", hash = "sha256:cf3027786aea64e21fbd822b804a17e5d894e989c9e8e724be37031910312932"},
-    {file = "duckduckgo_search-6.2.7.tar.gz", hash = "sha256:dd8ed40daf5a6d1f992d0155e586a9355b97d9e0f4d909bae23e3d00266148c7"},
+    {file = "duckduckgo_search-6.2.8-py3-none-any.whl", hash = "sha256:e2245a24bdfa28b15a017a82b27c5833e8cc1a4dcbf4911c566adb7375729959"},
+    {file = "duckduckgo_search-6.2.8.tar.gz", hash = "sha256:fbed4171591401fd25e6a3535479d0412c024b542aaff94b31efe415b7284cf4"},
 ]
 
 [[package]]
@@ -2705,7 +2705,7 @@ files = [
 
 [[package]]
 name = "ruff-lsp"
-version = "0.0.54"
+version = "0.0.55"
 requires_python = ">=3.7"
 summary = "A Language Server Protocol implementation for Ruff."
 groups = ["dev"]
@@ -2717,8 +2717,8 @@ dependencies = [
     "typing-extensions",
 ]
 files = [
-    {file = "ruff_lsp-0.0.54-py3-none-any.whl", hash = "sha256:1cc7d2f1cb69cbea1dfeba0f2d7dd5832bc68b0b052c7166530bcce63aa75f57"},
-    {file = "ruff_lsp-0.0.54.tar.gz", hash = "sha256:33e1d4dd20ca481fc6a811afcfdd451798c22fc39f2104df23c2855e322a0582"},
+    {file = "ruff_lsp-0.0.55-py3-none-any.whl", hash = "sha256:82d037b850cbdeff2fabe4326eaacabddfe47c919133d456b819ba35dce0355d"},
+    {file = "ruff_lsp-0.0.55.tar.gz", hash = "sha256:33fcfc77bbdc47f7a116a64f5fb9140e70d76d54f55a0d9a740a21b797906a45"},
 ]
 
 [[package]]
