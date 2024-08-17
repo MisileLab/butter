@@ -13,6 +13,7 @@ from openai import OpenAI
 from binaryornot.check import is_binary
 from google.cloud import texttospeech
 from rvc_python.infer import infer_file
+from torch.cuda import is_available
 
 from pathlib import Path
 from base64 import b64encode
@@ -76,6 +77,7 @@ except NameError:
   }
   messages: list[SystemMessage | AIMessage | ToolMessage | HumanMessage] = [SystemMessage(prompt)]
   whisper = OpenAI(api_key=api_key)
+  device = "cuda" if is_available() else "cpu"
 
 def persist_temp(key: str, value: Any):
   temp[key] = value
@@ -180,7 +182,8 @@ async def generate_message(content, _):
     resample_sr = 0,
     rms_mix_rate = 0.25, # type: ignore
     protect = 0.33,
-    version = "v1"
+    version = "v1",
+    device = device
   )
   logger.debug("cleanup original one")
   remove(google_voice)

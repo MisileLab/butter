@@ -22,8 +22,7 @@ dependencies = [
   "binaryornot==0.4.4",
   "mem0ai==0.0.20",
   "rvc-python==0.0.7",
-  "google-cloud-texttospeech==2.16.5",
-  "pydub==0.25.1",
+  "google-cloud-texttospeech==2.16.5"
 ]
 requires-python = "~=3.12.4"
 readme = "README.md"
