@@ -21,7 +21,7 @@ dependencies = [
   "pillow==10.4.0",
   "binaryornot==0.4.4",
   "mem0ai==0.0.20",
-  "rvc-python==0.0.7",
+  "git+https://github.com/MisileLab/rvc-python-butter",
   "google-cloud-texttospeech==2.16.5"
 ]
 requires-python = "~=3.12.4"
@@ -39,6 +39,5 @@ dev = [
 
 [tool.pdm.resolution.overrides]
 fairseq = "git+https://github.com/liyaodev/fairseq.git" # https://github.com/facebookresearch/fairseq/issues/5012
-omegaconf = ">=2.3.0"
-faiss-cpu = "==1.8.0.post1"
-numpy = ">=1.26.0,<2"
+omegaconf = "==2.3.0"
+numpy = ">=1.25.3,<2"

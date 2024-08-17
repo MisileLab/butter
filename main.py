@@ -78,6 +78,7 @@ except NameError:
   messages: list[SystemMessage | AIMessage | ToolMessage | HumanMessage] = [SystemMessage(prompt)]
   whisper = OpenAI(api_key=api_key)
   device = "cuda" if is_available() else "cpu"
+  logger.debug(device)
 
 def persist_temp(key: str, value: Any):
   temp[key] = value
