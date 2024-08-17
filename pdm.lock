@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:8a38a4759bcd763601efd968c03b04ace48882c01ce67c91b625bda6ccd28003"
+content_hash = "sha256:0e80238db59e8978519f8aa1c6aae5822de8fffc47f9de14805e3aebcee47232"
 
 [[metadata.targets]]
 requires_python = "~=3.12.4"
@@ -529,24 +529,22 @@ files = [
 
 [[package]]
 name = "duckduckgo-search"
-version = "6.2.8"
+version = "6.2.9"
 requires_python = ">=3.8"
 summary = "Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine."
 groups = ["default"]
 dependencies = [
     "click>=8.1.7",
-    "primp>=0.5.5",
+    "primp>=0.6.0",
 ]
 files = [
-    {file = "duckduckgo_search-6.2.8-py3-none-any.whl", hash = "sha256:e2245a24bdfa28b15a017a82b27c5833e8cc1a4dcbf4911c566adb7375729959"},
-    {file = "duckduckgo_search-6.2.8.tar.gz", hash = "sha256:fbed4171591401fd25e6a3535479d0412c024b542aaff94b31efe415b7284cf4"},
+    {file = "duckduckgo_search-6.2.9-py3-none-any.whl", hash = "sha256:c0bc2a78595c39e30aaedb7bca5a5f83e1932fbed25393e61b4b3ffb10cf99bb"},
+    {file = "duckduckgo_search-6.2.9.tar.gz", hash = "sha256:7c0f89faec882278f9ffc9900fe9118f6573cc694eff3d39ed9bbd3ae2f1f26d"},
 ]
 
 [[package]]
 name = "fairseq"
 version = "0.12.3.1"
-git = "https://github.com/liyaodev/fairseq.git"
-revision = "b963eac7a04c539ad59fb1e23277f2ff7ee29e74"
 summary = "Facebook AI Research Sequence-to-Sequence Toolkit"
 groups = ["default"]
 dependencies = [
