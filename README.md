@@ -1,4 +1,4 @@
-# Butter v2.5
+# Butter
 
 Smoothly running, with multi-modal now.
 
@@ -7,10 +7,11 @@ Smoothly running, with multi-modal now.
 - Python 3.12
 - Pdm
 
-## License about voice model
+## About voice model
 
 tldr: The voice is actually voice of game character.\
-We're using rvc model that mimic voice of "Maki Konuri" in Blue Archive.\
+We're using rvc model that mimic voice of "Sunohara Kokona" in Blue Archive.\
 We're pitched 2 times up of that rvc model.\
-[The Original Model](https://www.weights.gg/ko/models/clt9spzag007p107w88t0xsbq)
+[The Original Model](https://www.weights.gg/ko/models/clm7317cf1ds3cctcxcqn22ri)\
+[Unsure real original model](https://huggingface.co/LordDavis778/BlueArchivevoicemodels)
 
