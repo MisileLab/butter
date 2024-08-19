@@ -46,7 +46,7 @@ class describeImageBase(BaseModel):
 
 @print_it
 async def describe_image(image_url: str, question: str):
-  if image_url == "":
+  if not image_url:
     return "image url cannot empty"
   try:
     return (await llm_mini.ainvoke([
@@ -146,18 +146,18 @@ async def search_internet(query: str, question: str) -> str:
 
 class sendRequestBase(BaseModel):
   """send request to url and return the summarized content with llm, you can send the question to llm."""
-  url: str = Field(..., description="url to send request")
-  question: str = Field(..., description="question to ask llm")
+  url: str = Field(description="url to send request")
+  question: str = Field(description="question to ask llm")
 
 class sendRequestUsingBrowserBase(BaseModel):
   """same with send_request, but use browser to get the content. should be used when the content is not loaded by http request."""
-  url: str = Field(..., description="url to send request")
-  question: str = Field(..., description="question to ask llm")
+  url: str = Field(description="url to send request")
+  question: str = Field(description="question to ask llm")
 
 class searchInternetBase(BaseModel):
   """search the internet with query and return the summarized content with llm, you can send the question to llm."""
-  query: str = Field(..., description="query to search")
-  question: str = Field(..., description="question to ask llm")
+  query: str = Field(description="query to search")
+  question: str = Field(description="question to ask llm")
 
 functions = {
   "sendRequestBase": sendRequestBase,
