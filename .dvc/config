@@ -1,2 +1,7 @@
 [core]
     autostage = true
+    remote = myremote
+['remote "myremote"']
+    url = s3://dvc/butter
+    endpointurl = https://minio.misile.xyz
+
