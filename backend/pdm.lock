@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:7913697fae75fce51a300a9696ef43ee9838cdbd1415f36d60288d1ac0a8819c"
+content_hash = "sha256:d1ad267eee0037f6bd6e3f2786fea0d10e8f2aa956b1ff3188bb4ac96dfabeaf"
 
 [[metadata.targets]]
 requires_python = "~=3.12.4"
@@ -584,7 +584,7 @@ files = [
 
 [[package]]
 name = "google-cloud-texttospeech"
-version = "2.17.0"
+version = "2.17.1"
 requires_python = ">=3.7"
 summary = "Google Cloud Texttospeech API client library"
 groups = ["default"]
@@ -595,8 +595,8 @@ dependencies = [
     "protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0dev,>=3.20.2",
 ]
 files = [
-    {file = "google_cloud_texttospeech-2.17.0-py2.py3-none-any.whl", hash = "sha256:42ac3ce60dd9d017325a4ea37ac4a7727dd17833a60962f4934be645b11ef2d9"},
-    {file = "google_cloud_texttospeech-2.17.0.tar.gz", hash = "sha256:9b6c4d87b97832f60421277f138a53f9bb5d45e72b0653d296b204b4509f71e4"},
+    {file = "google_cloud_texttospeech-2.17.1-py2.py3-none-any.whl", hash = "sha256:ef80a3cab6cbc3054cc0240a1faaa6983a9260dc67fd0f22762d85cdeddc7e30"},
+    {file = "google_cloud_texttospeech-2.17.1.tar.gz", hash = "sha256:627ff82206cdfe3c2b9e7bda078a4c0c89964aaf64b4f04b17b512b2e0980073"},
 ]
 
 [[package]]
