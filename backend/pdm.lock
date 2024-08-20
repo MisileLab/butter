@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:d1ad267eee0037f6bd6e3f2786fea0d10e8f2aa956b1ff3188bb4ac96dfabeaf"
+content_hash = "sha256:b31b87938241fc893840e4268720bda234771f576c0a9dc93bed4f4aeea66747"
 
 [[metadata.targets]]
 requires_python = "~=3.12.4"
@@ -346,17 +346,17 @@ files = [
 
 [[package]]
 name = "duckduckgo-search"
-version = "6.2.9"
+version = "6.2.10"
 requires_python = ">=3.8"
 summary = "Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine."
 groups = ["default"]
 dependencies = [
     "click>=8.1.7",
-    "primp>=0.6.0",
+    "primp>=0.6.1",
 ]
 files = [
-    {file = "duckduckgo_search-6.2.9-py3-none-any.whl", hash = "sha256:c0bc2a78595c39e30aaedb7bca5a5f83e1932fbed25393e61b4b3ffb10cf99bb"},
-    {file = "duckduckgo_search-6.2.9.tar.gz", hash = "sha256:7c0f89faec882278f9ffc9900fe9118f6573cc694eff3d39ed9bbd3ae2f1f26d"},
+    {file = "duckduckgo_search-6.2.10-py3-none-any.whl", hash = "sha256:266c1528dcbc90931b7c800a2c1041a0cb447c83c485414d77a7e443be717ed6"},
+    {file = "duckduckgo_search-6.2.10.tar.gz", hash = "sha256:53057368480ca496fc4e331a34648124711580cf43fbb65336eaa6fd2ee37cec"},
 ]
 
 [[package]]
@@ -1584,19 +1584,19 @@ files = [
 
 [[package]]
 name = "primp"
-version = "0.6.0"
+version = "0.6.1"
 requires_python = ">=3.8"
 summary = "HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints"
 groups = ["default"]
 files = [
-    {file = "primp-0.6.0-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:e74173d87b232d276b0a64ce21717b993e2460677cb81d3289965a80f6675abd"},
-    {file = "primp-0.6.0-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:e7c2f0443afd3064efbe267e0515657173531bc89ee36ea21794edf08d931be9"},
-    {file = "primp-0.6.0-cp38-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:6e16aaab98bddea6fef90337e170fd2c232d399fb75d36dda53dd9f956cd9eeb"},
-    {file = "primp-0.6.0-cp38-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:f36ff625e1531f051bdad68d4cd8832ba8c7f1dec7b430af8206562b37656a28"},
-    {file = "primp-0.6.0-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:e941355ca729eb277613f9c5ee0b0f4273d3df9440a177dccc1780ad0c752858"},
-    {file = "primp-0.6.0-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:74585b3fb460dd13379b36d6c7ebc1efb24e92d21696476b93c4b97a2638f4ac"},
-    {file = "primp-0.6.0-cp38-abi3-win_amd64.whl", hash = "sha256:cf391210e28397ddbbbea7216c8fe72caa61a3a407e7faba351825ecf6ff3bec"},
-    {file = "primp-0.6.0.tar.gz", hash = "sha256:25ef0a1be619a621f197ed9d9768cedde2b4f1e8cd0764b609b06aa5773b4de9"},
+    {file = "primp-0.6.1-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:60cfe95e0bdf154b0f9036d38acaddc9aef02d6723ed125839b01449672d3946"},
+    {file = "primp-0.6.1-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:e1e92433ecf32639f9e800bc3a5d58b03792bdec99421b7fb06500e2fae63c85"},
+    {file = "primp-0.6.1-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6e02353f13f07fb5a6f91df9e2f4d8ec9f41312de95088744dce1c9729a3865d"},
+    {file = "primp-0.6.1-cp38-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:c5a2ccfdf488b17be225a529a31e2b22724b2e22fba8e1ae168a222f857c2dc0"},
+    {file = "primp-0.6.1-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:f335c2ace907800a23bbb7bc6e15acc7fff659b86a2d5858817f6ed79cea07cf"},
+    {file = "primp-0.6.1-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:5dc15bd9d47ded7bc356fcb5d8321972dcbeba18e7d3b7250e12bb7365447b2b"},
+    {file = "primp-0.6.1-cp38-abi3-win_amd64.whl", hash = "sha256:eebf0412ebba4089547b16b97b765d83f69f1433d811bb02b02cdcdbca20f672"},
+    {file = "primp-0.6.1.tar.gz", hash = "sha256:64b3c12e3d463a887518811c46f3ec37cca02e6af1ddf1287e548342de436301"},
 ]
 
 [[package]]
