@@ -18,8 +18,7 @@ mem0_config = {
   "vector_store": {
     "provider": "qdrant",
     "config": {
-      "host": config['qdrant']['host'],
-      "port": config['qdrant']['port']
+      "host": config['qdrant']['url']
     }
   },
 }
