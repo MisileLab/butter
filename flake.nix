@@ -13,9 +13,9 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ gcc ffmpeg-headless ];
+          packages = with pkgs; [ gcc ffmpeg-headless portaudio libsndfile libz freetype ];
           shellHook = ''
-            export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib";
+            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.libz}/lib:${pkgs.freetype}/lib";
           '';
         };
       });
