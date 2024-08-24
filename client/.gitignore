@@ -1,4 +1,7 @@
 config.toml
+output.wav
+output_butter.wav
+r
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
