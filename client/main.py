@@ -11,6 +11,7 @@ from playsound3 import playsound
 
 from pathlib import Path
 
+blocked = False
 is_recording = False
 audio_data = []
 config = loads(Path("config.toml").read_text())
@@ -35,30 +36,39 @@ def start_recording():
     thread.start()
 
 def stop_recording_and_save():
-  global is_recording, audio_data
+  global is_recording, audio_data, blocked
   if is_recording:
+    blocked = True
     is_recording = False
     logger.info("rec stop")
     logger.debug("stage 1: save to wav")
     # Concatenate all the audio chunks and save to WAV file
     audio_data = np.concatenate(audio_data, axis=0)
     write('output.wav', 44100, audio_data)
+    audio_data = []
     logger.debug("stage 2: send to whisper")
-    resp = o.audio.transcriptions.create(file=open('output.wav', 'rb'), model="whisper-1").text
+    resp = o.audio.transcriptions.create(file=open('output.wav', 'rb'), model="whisper-1", prompt="the audio is korean or english, don't translate").text
     logger.debug(f"resp: {resp}")
     logger.debug("stage 3: send to butter")
-    resp = post(f"{config['BASE_URL']}/chat/send", timeout=None).content
+    resp = post(
+      f"{config['BASE_URL'].strip("/")}/chat/send",
+      timeout=None, data={"name": config["user"], "content": resp}
+    ).content
     Path("output_butter.wav").write_bytes(resp)
     playsound("output_butter.wav", False)
-    audio_data = []
+    blocked = False
 
 def main():
   logger.debug("Hotkey pressed")
   logger.debug(is_recording)
+  if blocked:
+    logger.warning("blocked")
+    return
   if not is_recording:
     start_recording()
   else:
     stop_recording_and_save()
 
 add_hotkey('ctrl+q', main)
+logger.info("started")
 wait()
