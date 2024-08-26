@@ -252,7 +252,7 @@ files = [
 
 [[package]]
 name = "playsound"
-version = "1.2.2"
+version = "2.2.1"
 requires_python = ">=3.7"
 git = "https://github.com/sjmikler/playsound3"
 revision = "737ed50154f3edee8f0a01d0251b64042bf45490"
