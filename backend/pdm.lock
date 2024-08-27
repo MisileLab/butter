@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:f349891211f440c6dff2eea4fb4c814eb38c474ca23f3652a029a30e29274fc8"
+content_hash = "sha256:e1a5a2abb87551ecb30bfe7884d6745dd1ce0dddcba1cdba0222bc7a7c63f681"
 
 [[metadata.targets]]
 requires_python = "~=3.12.4"
@@ -1315,7 +1315,7 @@ files = [
 
 [[package]]
 name = "mem0ai"
-version = "0.1.2"
+version = "0.1.4"
 requires_python = "<4.0,>=3.8.1"
 summary = "Long-term memory for AI Agents"
 groups = ["default"]
@@ -1330,8 +1330,8 @@ dependencies = [
     "sqlalchemy<3.0.0,>=2.0.31",
 ]
 files = [
-    {file = "mem0ai-0.1.2-py3-none-any.whl", hash = "sha256:c51c2f663e8499fb0d91bdf4cc4e33e14f7999199d6c23b589c4452a57c23af3"},
-    {file = "mem0ai-0.1.2.tar.gz", hash = "sha256:3553234ab2180da145d9d9f3adcd10123790475f5eabc1b4184d357e3156e5eb"},
+    {file = "mem0ai-0.1.4-py3-none-any.whl", hash = "sha256:e1d6a00ce418595bef3c4f8f623de1e95ac7c48b0ab4847af9865ab8ea5973fd"},
+    {file = "mem0ai-0.1.4.tar.gz", hash = "sha256:21f8dd2a85864eda1613f55fc513420e8afec6a6b780d603c8f37a2a915e2550"},
 ]
 
 [[package]]
@@ -2110,7 +2110,7 @@ files = [
 
 [[package]]
 name = "qdrant-client"
-version = "1.11.0"
+version = "1.11.1"
 requires_python = ">=3.8"
 summary = "Client library for the Qdrant vector search engine"
 groups = ["default"]
@@ -2126,8 +2126,8 @@ dependencies = [
     "urllib3<3,>=1.26.14",
 ]
 files = [
-    {file = "qdrant_client-1.11.0-py3-none-any.whl", hash = "sha256:1f574ccebb91c0bc8a620c9a41a5a010084fbc4d8c6f1cd0ab7b2eeb97336fc0"},
-    {file = "qdrant_client-1.11.0.tar.gz", hash = "sha256:7c1d4d7a96cfd1ee0cde2a21c607e9df86bcca795ad8d1fd274d295ab64b8458"},
+    {file = "qdrant_client-1.11.1-py3-none-any.whl", hash = "sha256:1375fad77c825c957181ff53775fb900c4383e817f864ea30b2605314da92f07"},
+    {file = "qdrant_client-1.11.1.tar.gz", hash = "sha256:bfc23239b027073352ad92152209ec50281519686b7da3041612faece0fcdfbd"},
 ]
 
 [[package]]

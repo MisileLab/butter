@@ -17,7 +17,7 @@ dependencies = [
   "beautifulsoup4==4.12.3",
   "langchain-openai==0.1.22",
   "binaryornot==0.4.4",
-  "mem0ai==0.1.2",
+  "mem0ai==0.1.4",
   "git+https://github.com/MisileLab/rvc-python-butter",
   "google-cloud-texttospeech==2.17.2",
   "python-multipart==0.0.9",
