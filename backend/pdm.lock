@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:e1a5a2abb87551ecb30bfe7884d6745dd1ce0dddcba1cdba0222bc7a7c63f681"
+content_hash = "sha256:ab92e2b19deefcf34b3fb794c66e816d2a7bce7695140ccc0e8a099a76571c6d"
 
 [[metadata.targets]]
 requires_python = "~=3.12.4"
@@ -866,7 +866,7 @@ files = [
 
 [[package]]
 name = "httpx"
-version = "0.27.0"
+version = "0.27.2"
 requires_python = ">=3.8"
 summary = "The next generation HTTP client."
 groups = ["default"]
@@ -878,24 +878,24 @@ dependencies = [
     "sniffio",
 ]
 files = [
-    {file = "httpx-0.27.0-py3-none-any.whl", hash = "sha256:71d5465162c13681bff01ad59b2cc68dd838ea1f10e51574bac27103f00c91a5"},
-    {file = "httpx-0.27.0.tar.gz", hash = "sha256:a0cb88a46f32dc874e04ee956e4c2764aba2aa228f650b06788ba6bda2962ab5"},
+    {file = "httpx-0.27.2-py3-none-any.whl", hash = "sha256:7bb2708e112d8fdd7829cd4243970f0c223274051cb35ee80c03301ee29a3df0"},
+    {file = "httpx-0.27.2.tar.gz", hash = "sha256:f7c2be1d2f3c3c3160d441802406b206c2b76f5947b11115e6df10c6c65e66c2"},
 ]
 
 [[package]]
 name = "httpx"
-version = "0.27.0"
+version = "0.27.2"
 extras = ["http2"]
 requires_python = ">=3.8"
 summary = "The next generation HTTP client."
 groups = ["default"]
 dependencies = [
     "h2<5,>=3",
-    "httpx==0.27.0",
+    "httpx==0.27.2",
 ]
 files = [
-    {file = "httpx-0.27.0-py3-none-any.whl", hash = "sha256:71d5465162c13681bff01ad59b2cc68dd838ea1f10e51574bac27103f00c91a5"},
-    {file = "httpx-0.27.0.tar.gz", hash = "sha256:a0cb88a46f32dc874e04ee956e4c2764aba2aa228f650b06788ba6bda2962ab5"},
+    {file = "httpx-0.27.2-py3-none-any.whl", hash = "sha256:7bb2708e112d8fdd7829cd4243970f0c223274051cb35ee80c03301ee29a3df0"},
+    {file = "httpx-0.27.2.tar.gz", hash = "sha256:f7c2be1d2f3c3c3160d441802406b206c2b76f5947b11115e6df10c6c65e66c2"},
 ]
 
 [[package]]
@@ -1124,7 +1124,7 @@ files = [
 
 [[package]]
 name = "langsmith"
-version = "0.1.104"
+version = "0.1.105"
 requires_python = "<4.0,>=3.8.1"
 summary = "Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
 groups = ["default"]
@@ -1136,8 +1136,8 @@ dependencies = [
     "requests<3,>=2",
 ]
 files = [
-    {file = "langsmith-0.1.104-py3-none-any.whl", hash = "sha256:049cd312952a0db9f5edeed3b9a8616e66ef86e5490c835c8bb054569203b0d0"},
-    {file = "langsmith-0.1.104.tar.gz", hash = "sha256:7892dfe452d143fba573d7eb28dbff3202d2f2daacab8c7276ffe4a850179d4d"},
+    {file = "langsmith-0.1.105-py3-none-any.whl", hash = "sha256:a0098d0bc60ee79792109b0c1fef8252e21fd2dc424f4d902b8d9eb75160438b"},
+    {file = "langsmith-0.1.105.tar.gz", hash = "sha256:a8717ef90f3f740c202aa6878da89d4581ff28998336b48b831a92b855c460c3"},
 ]
 
 [[package]]
@@ -1315,7 +1315,7 @@ files = [
 
 [[package]]
 name = "mem0ai"
-version = "0.1.4"
+version = "0.1.5"
 requires_python = "<4.0,>=3.8.1"
 summary = "Long-term memory for AI Agents"
 groups = ["default"]
@@ -1330,8 +1330,8 @@ dependencies = [
     "sqlalchemy<3.0.0,>=2.0.31",
 ]
 files = [
-    {file = "mem0ai-0.1.4-py3-none-any.whl", hash = "sha256:e1d6a00ce418595bef3c4f8f623de1e95ac7c48b0ab4847af9865ab8ea5973fd"},
-    {file = "mem0ai-0.1.4.tar.gz", hash = "sha256:21f8dd2a85864eda1613f55fc513420e8afec6a6b780d603c8f37a2a915e2550"},
+    {file = "mem0ai-0.1.5-py3-none-any.whl", hash = "sha256:c10f02a88875190be011a0211f76ad53a12ca24eeb62d5dca0c738dd762f25c8"},
+    {file = "mem0ai-0.1.5.tar.gz", hash = "sha256:cd00516f6ba762ff1ef599059ec7929751feb8c26234aa3f820b33330597128f"},
 ]
 
 [[package]]
