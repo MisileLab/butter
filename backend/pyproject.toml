@@ -12,7 +12,7 @@ dependencies = [
   "orjson==3.10.7",
   "duckduckgo-search==6.2.11",
   "openai==1.42.0",
-  "selenium==4.23.1",
+  "selenium==4.24.0",
   "lxml==5.3.0",
   "beautifulsoup4==4.12.3",
   "langchain-openai==0.1.23",
