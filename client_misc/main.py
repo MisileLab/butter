@@ -17,8 +17,14 @@ class LocalCache:
     v = round(SystemRandom().uniform(self.randmin, self.randmax), 2)
     logger.debug(v)
     self.value += v
+    if self.value < self.min:
+      self.value = self.min
+    elif self.value > self.max:
+      self.value = self.max
 
-local_cache = [LocalCache("FaceAngleX", 0, -30, 30, -5, 5)]
+local_cache = [
+  LocalCache("FaceAngleX", 0, -30, 30, -5, 5)
+]
 
 async def main():
   vts = pvts()
@@ -27,9 +33,11 @@ async def main():
   await vts.request_authenticate()
   try:
     while True:
+      for i in local_cache:
+        if i.get
       local_cache[0].get_rand_number()
       await vts.request(vts.vts_request.requestSetParameterValue("FaceAngleX", local_cache[0].value, face_found=True))
-      await sleep(1)
+      await sleep(0.1)
   except KeyboardInterrupt:
     pass
   finally:

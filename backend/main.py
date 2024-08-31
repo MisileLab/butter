@@ -1,16 +1,11 @@
 from modules.llm_function import middle_prompt, llm_mini
 from modules.llm import api_key, llm, functions, middle_converting_functions
-from modules.memory import print_it, m
-from modules.config import config
-
+from modules.memory import m
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
 
 from loguru import logger
 from openai import OpenAI
 from binaryornot.check import is_binary_string
-from google.cloud import texttospeech
-from rvc_python.infer import RVCInference
-from torch.cuda import is_available
 from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -18,8 +13,6 @@ from pathlib import Path
 from base64 import b64encode, b64decode
 from copy import deepcopy
 from inspect import iscoroutinefunction
-from os import remove
-import tempfile
 
 app = FastAPI()
 wss: list[WebSocket] = []
@@ -30,34 +23,10 @@ async def broadcast(event_type: str, data: str):
   for ws in wss:
     await ws.send_json({"type": event_type, "data": data})
 
-@print_it
-def generate_voice(content: str) -> str:
-  client = texttospeech.TextToSpeechClient(client_options={
-    "api_key": config["ai"]["google_tts"]
-  })
-  resp = client.synthesize_speech(
-    input = texttospeech.SynthesisInput(text=content),
-    voice = texttospeech.VoiceSelectionParams(
-      language_code="ko-KR",
-      name="ko-KR-neural2-A",
-      ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
-    ),
-    audio_config = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.MP3)
-  )
-  with open(tempfile.mkstemp(suffix=".mp3")[1], "wb") as f:
-    f.write(resp.audio_content)
-    return f.name
-
 prompt = Path("./prompts/prompt").read_text()
 summarize_prompt = Path("./prompts/summarize_prompt").read_text()
 messages: list[SystemMessage | AIMessage | ToolMessage | HumanMessage] = [SystemMessage(prompt)]
 whisper = OpenAI(api_key=api_key)
-device = "cuda:0" if is_available() else "cpu"
-logger.debug(f"device: {device}")
-
-rvcinf = RVCInference(models_dir="model", device=device)
-logger.debug(rvcinf.list_models())
-rvcinf.load_model("model", "v1")
 
 @app.post("/chat/send")
 async def send_message(
@@ -222,21 +191,6 @@ async def delete_memory_api(id: str = Form()):
 @app.post("/memory/reset")
 async def reset_memory_api():
   m.reset()
-
-@app.post("/rvc")
-async def recv_rvc(content: str = Form()):
-  await broadcast("rvc", "start")
-  base_tts = generate_voice(content)
-  logger.debug(f"base_tts's path: {base_tts}")
-  logger.debug("start rvc")
-  rvcinf.infer_file(base_tts, "output.wav")
-  await broadcast("rvc", "end")
-  logger.debug("end rvc")
-  try:
-    remove(base_tts)
-  except PermissionError:
-    logger.warning("base_tts can't removed due to permission error")
-  return b64encode(Path("output.wav").read_bytes()).decode('utf-8')
 
 @app.post("/whisper")
 async def audio_to_text(file: str = Form()):

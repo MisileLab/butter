@@ -1,4 +1,5 @@
 from .config import api_key
+from .lib import print_it
 
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import AIMessage, ToolMessage, SystemMessage, HumanMessage
@@ -15,26 +16,6 @@ from openai import BadRequestError
 
 from datetime import datetime, timezone
 from pathlib import Path
-from functools import wraps
-from inspect import iscoroutinefunction
-
-def print_it(func):
-  @wraps(func)
-  async def wrapper(*args, **kwargs):
-    logger.debug(f'{func.__name__}, {args}, {kwargs}')
-    res = await func(*args, **kwargs)
-    logger.debug(f"return {res}")
-    logger.debug(f"type is {type(res)}")
-    return res
-
-  @wraps(func)
-  def non_async_wrapper(*args, **kwargs):
-    logger.debug(f'{func.__name__}, {args}, {kwargs}')
-    res = func(*args, **kwargs)
-    logger.debug(f"return {res}")
-    logger.debug(f"type is {type(res)}")
-    return res
-  return wrapper if iscoroutinefunction(func) else non_async_wrapper
 
 middle_prompt = Path("./prompts/middle_prompt").read_text()
 llm_mini = ChatOpenAI(model="gpt-4o-mini", api_key=api_key)

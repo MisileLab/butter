@@ -11,9 +11,10 @@
     import { MicVAD, utils } from "@ricky0123/vad-web"
     import { queryId, getItem, nullVerify } from "@misile/satellite"
     import { nullValue } from "@misile/satellite/errors"
-    const BASE_API_URL="http://localhost:8000"
+    const BASE_API_URL="https://butter.misile.xyz"
+    const BASE_RVC_API_URL="https://rvc.misile.xyz"
     var isrvc = false
-    console.log(BASE_API_URL)
+    console.log(BASE_API_URL, BASE_RVC_API_URL)
     var name: string;
     try {
       name = getItem("name")
@@ -53,7 +54,7 @@
                   isrvc = true;
                   fd = new FormData()
                   fd.append('content', txt)
-                  fetch(`${BASE_API_URL}/rvc`, {
+                  fetch(`${BASE_RVC_API_URL}/rvc`, {
                     method: 'POST',
                     body: fd
                   }).then((res)=>{
