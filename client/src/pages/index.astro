@@ -1,0 +1,83 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    import { MicVAD, utils } from "@ricky0123/vad-web"
+    import { queryId, getItem, nullVerify } from "@misile/satellite"
+    import { nullValue } from "@misile/satellite/errors"
+    const BASE_API_URL="http://localhost:8000"
+    var isrvc = false
+    console.log(BASE_API_URL)
+    var name: string;
+    try {
+      name = getItem("name")
+    } catch (e) {
+      if (e instanceof nullValue) {
+        name = nullVerify(prompt("name: "))
+        localStorage.setItem("name", name)
+      }
+    }
+    const myvad = await MicVAD.new({
+      workletURL: './vad.worklet.bundle.min.js',
+      modelURL: './silero_vad.onnx',
+      onSpeechEnd: (audio) => {
+        console.log('speech end')
+        const d = utils.arrayBufferToBase64(utils.encodeWAV(audio));
+        (queryId("audio") as HTMLAudioElement).src = `data:audio/wav;base64,${d}`
+        var fd = new FormData()
+        fd.append('file', d)
+        // send whisper and get response
+        fetch(`${BASE_API_URL}/whisper`, {
+          method: 'POST',
+          body: fd
+        }).then((res) => {
+          res.text().then((txt) => {
+            console.log(txt)
+            fd = new FormData()
+            fd.append('name', name)
+            fd.append('content', txt)
+            fetch(`${BASE_API_URL}/chat/send`, {
+              method: 'POST',
+              body: fd
+            }).then((res)=>{
+              res.text().then((txt)=>{
+                console.log(txt)
+                if (!isrvc) {
+                  console.log('try rvc')
+                  isrvc = true;
+                  fd = new FormData()
+                  fd.append('content', txt)
+                  fetch(`${BASE_API_URL}/rvc`, {
+                    method: 'POST',
+                    body: fd
+                  }).then((res)=>{
+                    res.text().then((txt)=>{
+                      (queryId("audio_resp") as HTMLAudioElement).src = `data:audio/wav;base64,${txt.replace(/"/g, '')}`;
+                      (queryId("audio_resp") as HTMLAudioElement).play()
+                      isrvc = false
+                    })
+                  })
+                }
+              })
+            })
+          })
+        })
+      },
+      onSpeechStart: () => {
+        console.log('speech start')
+      }
+    })
+    myvad.start()
+  </script>
+</head>
+<body>
+  <audio id="audio" controls />
+  <audio id="audio_resp" controls />
+</body>
+</html>

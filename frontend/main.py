@@ -46,9 +46,7 @@ async def generate_message(content: str, _):
   else:
     res = post(f"{BASE_URL}/chat/send", data={"name": user, "content": content}, timeout=None)
   res.raise_for_status()
-  with open(mkstemp(suffix=".wav")[1], 'wb') as f:
-    f.write(res.content)
-    return gr.Audio(f.name)
+  return res.content.decode()
 
 with gr.Blocks() as frontend:
   with gr.Tab("Chatting"):

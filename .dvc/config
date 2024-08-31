@@ -4,5 +4,4 @@
 ['remote "myremote"']
     url = s3://dvc/butter
     endpointurl = https://minio.misile.xyz
-    access_key_id = readonly-anon
-    secret_access_key = qwer1234
+    allow_anonymous_login = true

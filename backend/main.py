@@ -9,19 +9,26 @@ from loguru import logger
 from openai import OpenAI
 from binaryornot.check import is_binary_string
 from google.cloud import texttospeech
-from rvc_python.infer import infer_file
+from rvc_python.infer import RVCInference
 from torch.cuda import is_available
-from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
+from fastapi.middleware.cors import CORSMiddleware
 
 from pathlib import Path
-from base64 import b64encode
+from base64 import b64encode, b64decode
 from copy import deepcopy
 from inspect import iscoroutinefunction
 from os import remove
 import tempfile
 
 app = FastAPI()
+wss: list[WebSocket] = []
+
+app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
+
+async def broadcast(event_type: str, data: str):
+  for ws in wss:
+    await ws.send_json({"type": event_type, "data": data})
 
 @print_it
 def generate_voice(content: str) -> str:
@@ -47,14 +54,17 @@ messages: list[SystemMessage | AIMessage | ToolMessage | HumanMessage] = [System
 whisper = OpenAI(api_key=api_key)
 device = "cuda:0" if is_available() else "cpu"
 logger.debug(f"device: {device}")
-directory = Path(tempfile.mkdtemp())
+
+rvcinf = RVCInference(models_dir="model", device=device)
+logger.debug(rvcinf.list_models())
+rvcinf.load_model("model", "v1")
 
 @app.post("/chat/send")
 async def send_message(
   name: str | None = Form(None),
   content: str | None = Form(None),
   files: list[UploadFile] = File(default=[])
-) -> FileResponse:  # sourcery skip: low-code-quality
+) -> str:  # sourcery skip: low-code-quality
   logger.debug(messages[0])
   logger.debug(messages[-1])
   if name is None:
@@ -116,34 +126,11 @@ async def send_message(
       )
     msg: AIMessage = await llm.ainvoke(messages) # type: ignore it's aimessage
   messages.append(msg)
-  logger.debug("stage 2: let's tts and rvc")
   if not isinstance(msg.content, str):
     raise HTTPException(
       status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
       detail="Message content is not a string"
     )
-  base_tts = generate_voice(msg.content)
-  logger.debug(f"base_tts's path: {base_tts}")
-  rvc_path = infer_file(
-    input_path = base_tts,
-    model_path = "./model/model.pth",
-    index_path = "./model/model.index",
-    f0method = "harvest",
-    f0up_key = 2,
-    opt_path = str(directory.joinpath("out.wav")),
-    index_rate = 0.5,
-    filter_radius = 3,
-    resample_sr = 0,
-    rms_mix_rate = 1,
-    protect = 0.33,
-    version = "v1",
-    device = device
-  )
-  logger.debug("remove base_tts, because rvc ended")
-  try:
-    remove(base_tts)
-  except PermissionError:
-    logger.warning("base_tts can't removed due to permission error")
   if len(messages) >= 70:
     tmp_messages = messages[1:60]
     while tmp_messages[-1].__class__ in [ToolMessage, HumanMessage]:
@@ -158,7 +145,7 @@ async def send_message(
     messages.extend(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
-  return FileResponse(path=rvc_path, media_type="audio/wav")
+  return msg.content
 
 @app.post("/chat/reset")
 async def reset_chat():
@@ -236,3 +223,40 @@ async def delete_memory_api(id: str = Form()):
 async def reset_memory_api():
   m.reset()
 
+@app.post("/rvc")
+async def recv_rvc(content: str = Form()):
+  await broadcast("rvc", "start")
+  base_tts = generate_voice(content)
+  logger.debug(f"base_tts's path: {base_tts}")
+  logger.debug("start rvc")
+  rvcinf.infer_file(base_tts, "output.wav")
+  await broadcast("rvc", "end")
+  logger.debug("end rvc")
+  try:
+    remove(base_tts)
+  except PermissionError:
+    logger.warning("base_tts can't removed due to permission error")
+  return b64encode(Path("output.wav").read_bytes()).decode('utf-8')
+
+@app.post("/whisper")
+async def audio_to_text(file: str = Form()):
+  logger.debug("start whisper")
+  Path("temp_whisper.wav").write_bytes(b64decode(file))
+  transcripted = whisper.audio.transcriptions.create(
+    file = open('temp_whisper.wav', 'rb'),
+    model = "whisper-1"
+  )
+  logger.debug("end whisper")
+  await broadcast("whisper", transcripted.text)
+  return transcripted.text
+
+@app.websocket("/event")
+async def event(ws: WebSocket):
+  await ws.accept()
+  wss.append(ws)
+  try:
+    while True:
+      data = await ws.receive_text()
+      logger.debug(data)
+  except WebSocketDisconnect:
+    wss.remove(ws)
