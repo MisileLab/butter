@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:6158394b754105bd644f7a93a47e25050ca5d4194bc6ca13542a959719eb95f4"
+content_hash = "sha256:d70d61ea06060e394364b7b5c3a6127fdb771f8a4d3e2c32e6a1a55e20e1808a"
 
 [[metadata.targets]]
 requires_python = "==3.12.5"
@@ -273,7 +273,7 @@ version = "0.4.6"
 requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 summary = "Cross-platform colored terminal text."
 groups = ["default"]
-marker = "sys_platform == \"win32\" or platform_system == \"Windows\""
+marker = "platform_system == \"Windows\" or sys_platform == \"win32\""
 files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
@@ -1054,7 +1054,7 @@ files = [
 
 [[package]]
 name = "mem0ai"
-version = "0.1.6"
+version = "0.1.7"
 requires_python = "<4.0,>=3.8.1"
 summary = "Long-term memory for AI Agents"
 groups = ["default"]
@@ -1069,8 +1069,8 @@ dependencies = [
     "sqlalchemy<3.0.0,>=2.0.31",
 ]
 files = [
-    {file = "mem0ai-0.1.6-py3-none-any.whl", hash = "sha256:353282335503518befbcf263136021965ffc77ec446ece25bc4225e7d5c0872e"},
-    {file = "mem0ai-0.1.6.tar.gz", hash = "sha256:86ec4d74e136a6509a92771c29541c9a213d2860344bda8cc382c82c5d63ab98"},
+    {file = "mem0ai-0.1.7-py3-none-any.whl", hash = "sha256:f1cacbebca9f441fa4de5f642d11147ae6fa97928317dd5c675115075a012235"},
+    {file = "mem0ai-0.1.7.tar.gz", hash = "sha256:97df778bfdc0766da9822864a507d882305d5f5b9fb6187cafa61b2bf79d4c3a"},
 ]
 
 [[package]]
