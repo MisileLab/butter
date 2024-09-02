@@ -1806,7 +1806,7 @@ files = [
 
 [[package]]
 name = "starlette"
-version = "0.38.3"
+version = "0.38.4"
 requires_python = ">=3.8"
 summary = "The little ASGI library that shines."
 groups = ["default"]
@@ -1815,8 +1815,8 @@ dependencies = [
     "typing-extensions>=3.10.0; python_version < \"3.10\"",
 ]
 files = [
-    {file = "starlette-0.38.3-py3-none-any.whl", hash = "sha256:0e4af343a4e59324b96fbe0f3c6ad8c3a908d73f12f5c80a797803a6c3ad4687"},
-    {file = "starlette-0.38.3.tar.gz", hash = "sha256:f674450f0f46a790be1f3a128f386080600b58fa358f8e320d93dbef6d7f676c"},
+    {file = "starlette-0.38.4-py3-none-any.whl", hash = "sha256:526f53a77f0e43b85f583438aee1a940fd84f8fd610353e8b0c1a77ad8a87e76"},
+    {file = "starlette-0.38.4.tar.gz", hash = "sha256:53a7439060304a208fea17ed407e998f46da5e5d9b1addfea3040094512a6379"},
 ]
 
 [[package]]
@@ -2144,7 +2144,7 @@ files = [
 
 [[package]]
 name = "yarl"
-version = "1.9.6"
+version = "1.9.7"
 requires_python = ">=3.8"
 summary = "Yet another URL library"
 groups = ["default"]
@@ -2153,21 +2153,21 @@ dependencies = [
     "multidict>=4.0",
 ]
 files = [
-    {file = "yarl-1.9.6-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:495c251bf439d3d40ee99eb25e2d8af2fb100b4727a1ca82624273fcb0146680"},
-    {file = "yarl-1.9.6-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:89b3b220eca621a4155f3affb16e203e2c9d5de894a864fec29e6674018f2622"},
-    {file = "yarl-1.9.6-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:4275e619a95c61a793c47fcd5f1fe9aa88273bdd56e09594bfb7d0784dd4ffdd"},
-    {file = "yarl-1.9.6-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2b84baedf1ea3986940d1e88e9f26688a06635c250b9ce14ca4f64355ab33caf"},
-    {file = "yarl-1.9.6-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:494dbe74318ed7190e3a189973600a50b8d3b2027f6915fc3265d5e0dc465077"},
-    {file = "yarl-1.9.6-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:0ecb0c3f5fa89dfbb926dd743c6c28868b85ff22570f1a82f772515bf535ad54"},
-    {file = "yarl-1.9.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:70751d8bb5dacce02b808f7bb71545d658e5a21e4b312f0a20f6de4d5e007211"},
-    {file = "yarl-1.9.6-cp312-cp312-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:fc6a25684df320e49b17eb34bc7638cc3dac5d70f4ff3b15ec25f29156a304ea"},
-    {file = "yarl-1.9.6-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:d466e1b28338910c2d7e54a22a0542d7a4f989c7a4824f4b40d2f2a14d97b65c"},
-    {file = "yarl-1.9.6-cp312-cp312-musllinux_1_2_i686.whl", hash = "sha256:50a024dc446ef0b0bc96176c6bfd6b9825e2d306a3e2be8fad09406e7b3630e7"},
-    {file = "yarl-1.9.6-cp312-cp312-musllinux_1_2_ppc64le.whl", hash = "sha256:7e00e3e33a51ff8059bdec30336b3910fdfc121e2d1ed0c51d28a4198411eafc"},
-    {file = "yarl-1.9.6-cp312-cp312-musllinux_1_2_s390x.whl", hash = "sha256:d6609652c8fbe903be56782fb99a2e481a7ef5382900988baca9312da72dfede"},
-    {file = "yarl-1.9.6-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:ad199a15f616abfecb1e8eec053e1193c75c21fca136b5a401123c3e78ee989d"},
-    {file = "yarl-1.9.6-cp312-cp312-win32.whl", hash = "sha256:0d41d541080730548f6c03932bfe7b08aff964a172fa5623695970ceac349cc2"},
-    {file = "yarl-1.9.6-cp312-cp312-win_amd64.whl", hash = "sha256:9a88b543175dc9884d919eab40bd3d39c99b6dedaa17910f6f431d0c3495d212"},
-    {file = "yarl-1.9.6-py3-none-any.whl", hash = "sha256:d34a4c6fde4d49aab493214228d0e03f7e5a717f6da4fe65b879a3af3c22ad7b"},
-    {file = "yarl-1.9.6.tar.gz", hash = "sha256:0bdc6a7b59efa0c34c90ef3da864f0c53e81a4640fbc461bfde9f1b0c64c3c81"},
+    {file = "yarl-1.9.7-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:0d8cf3d0b67996edc11957aece3fbce4c224d0451c7c3d6154ec3a35d0e55f6b"},
+    {file = "yarl-1.9.7-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:3a7748cd66fef49c877e59503e0cc76179caf1158d1080228e67e1db14554f08"},
+    {file = "yarl-1.9.7-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:4a6fa3aeca8efabb0fbbb3b15e0956b0cb77f7d9db67c107503c30af07cd9e00"},
+    {file = "yarl-1.9.7-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:cf37dd0008e5ac5c3880198976063c491b6a15b288d150d12833248cf2003acb"},
+    {file = "yarl-1.9.7-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:87aa5308482f248f8c3bd9311cd6c7dfd98ea1a8e57e35fb11e4adcac3066003"},
+    {file = "yarl-1.9.7-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:867b13c1b361f9ba5d2f84dc5408082f5d744c83f66de45edc2b96793a9c5e48"},
+    {file = "yarl-1.9.7-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:48ce93947554c2c85fe97fc4866646ec90840bc1162e4db349b37d692a811755"},
+    {file = "yarl-1.9.7-cp312-cp312-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:fcd3d94b848cba132f39a5b40d80b0847d001a91a6f35a2204505cdd46afe1b2"},
+    {file = "yarl-1.9.7-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:d06d6a8f98dd87646d98f0c468be14b201e47ec6092ad569adf835810ad0dffb"},
+    {file = "yarl-1.9.7-cp312-cp312-musllinux_1_2_i686.whl", hash = "sha256:91567ff4fce73d2e7ac67ed5983ad26ba2343bc28cb22e1e1184a9677df98d7c"},
+    {file = "yarl-1.9.7-cp312-cp312-musllinux_1_2_ppc64le.whl", hash = "sha256:1d5594512541e63188fea640b7f066c218d2176203d6e6f82abf702ae3dca3b2"},
+    {file = "yarl-1.9.7-cp312-cp312-musllinux_1_2_s390x.whl", hash = "sha256:9c2743e43183e4afbb07d5605693299b8756baff0b086c25236c761feb0e3c56"},
+    {file = "yarl-1.9.7-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:daa69a3a2204355af39f4cfe7f3870d87c53d77a597b5100b97e3faa9460428b"},
+    {file = "yarl-1.9.7-cp312-cp312-win32.whl", hash = "sha256:36b16884336c15adf79a4bf1d592e0c1ffdb036a760e36a1361565b66785ec6c"},
+    {file = "yarl-1.9.7-cp312-cp312-win_amd64.whl", hash = "sha256:2ead2f87a1174963cc406d18ac93d731fbb190633d3995fa052d10cefae69ed8"},
+    {file = "yarl-1.9.7-py3-none-any.whl", hash = "sha256:49935cc51d272264358962d050d726c3e5603a616f53e52ea88e9df1728aa2ee"},
+    {file = "yarl-1.9.7.tar.gz", hash = "sha256:f28e602edeeec01fc96daf7728e8052bc2e12a672e2a138561a1ebaf30fd9df7"},
 ]
