@@ -7,6 +7,7 @@ from loguru import logger
 from openai import OpenAI
 from binaryornot.check import is_binary_string
 from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
+from fastapi.responses import PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from pathlib import Path
@@ -33,7 +34,7 @@ async def send_message(
   name: str | None = Form(None),
   content: str | None = Form(None),
   files: list[UploadFile] = File(default=[])
-) -> str:  # sourcery skip: low-code-quality
+):  # sourcery skip: low-code-quality
   logger.debug(messages[0])
   logger.debug(messages[-1])
   if name is None:
@@ -114,7 +115,7 @@ async def send_message(
     messages.extend(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
-  return msg.content
+  return PlainTextResponse(content=msg.content)
 
 @app.post("/chat/reset")
 async def reset_chat():
@@ -198,7 +199,8 @@ async def audio_to_text(file: str = Form()):
   Path("temp_whisper.wav").write_bytes(b64decode(file))
   transcripted = whisper.audio.transcriptions.create(
     file = open('temp_whisper.wav', 'rb'),
-    model = "whisper-1"
+    model = "whisper-1",
+    prompt = "voice is mostly english and sometimes korean, If you dont know language just select to english"
   )
   logger.debug("end whisper")
   await broadcast("whisper", transcripted.text)
