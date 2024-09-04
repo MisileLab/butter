@@ -13,7 +13,7 @@
     "@misile/satellite": "0.0.2",
     "@ricky0123/vad-web": "0.0.18",
     "astro": "4.15.2",
-    "onnxruntime-web": "1.19.0"
+    "onnxruntime-web": "1.19.2"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.3",
