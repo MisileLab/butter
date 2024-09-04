@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:4cf1b4b84ab962a7b9cb1d4584548db9971b4b877ddcf541434e309fdd6b88bb"
+content_hash = "sha256:13d698a16af787bdf868bbd932fdb7fb17f37069d9bfa96ff919e1d2a1b34c7b"
 
 [[metadata.targets]]
 requires_python = "==3.12.5"
@@ -1054,7 +1054,7 @@ files = [
 
 [[package]]
 name = "mem0ai"
-version = "0.1.9"
+version = "0.1.10"
 requires_python = "<4.0,>=3.9"
 summary = "Long-term memory for AI Agents"
 groups = ["default"]
@@ -1070,8 +1070,8 @@ dependencies = [
     "sqlalchemy<3.0.0,>=2.0.31",
 ]
 files = [
-    {file = "mem0ai-0.1.9-py3-none-any.whl", hash = "sha256:6ab6f7a8a81f22d8b25cd8d7ef785d251cc8eeb3e72a7d855ddf3fcd45ef4ea3"},
-    {file = "mem0ai-0.1.9.tar.gz", hash = "sha256:f23b65b5ac0efbb4ca48002b566aca33b9de7e81f42a9cf316f7696f7465f5b0"},
+    {file = "mem0ai-0.1.10-py3-none-any.whl", hash = "sha256:f6cdc37efc95dd4d8db8b2bd7833e1d2aaec071ce0075081dab697e6ae164640"},
+    {file = "mem0ai-0.1.10.tar.gz", hash = "sha256:bef75e4a53347deeceeb033dfccc4caca36399c0f71895af853985f585980fe7"},
 ]
 
 [[package]]
