@@ -6,7 +6,7 @@ authors = [
   {name = "misile", email = "misileminecord@gmail.com"},
 ]
 dependencies = [
-  "pyvts==0.3.2",
+  "pyvts==0.3.3",
   "numpy==2.1.1",
   "loguru==0.7.2"
 ]

@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:d6d5e6f3c8b43abf1557755a2997cc71ff4eaeec4f57423a6bfff8df4897b3bb"
+content_hash = "sha256:708ffab1cb712bd27e5ede26ac656a07fcac9ca6f506f3d7b3d206c071e67369"
 
 [[metadata.targets]]
 requires_python = "==3.12.5"
@@ -99,7 +99,7 @@ files = [
 
 [[package]]
 name = "pyvts"
-version = "0.3.2"
+version = "0.3.3"
 summary = "A python library for interacting with the VTube Studio API"
 groups = ["default"]
 dependencies = [
@@ -108,7 +108,7 @@ dependencies = [
     "websockets>=10.4",
 ]
 files = [
-    {file = "pyvts-0.3.2.tar.gz", hash = "sha256:07b05b49af297c17033f89198532cb4aa163aea8f835b5a930bfff06a7e2e7c2"},
+    {file = "pyvts-0.3.3.tar.gz", hash = "sha256:decf3299a391ce2e38ffcc3fb2caf71f06b27b9ca2b7581dc5a97e62620da2c4"},
 ]
 
 [[package]]
