@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:5215c48be3519b74309fb1032eb0262d24ddd24ec3aca46ca3276ec164b0ef73"
+content_hash = "sha256:6faf684afb1bfe66ee672e9b5a2570bfc31401ecae6935802df34fec89f3ff99"
 
 [[metadata.targets]]
 requires_python = "==3.12.5"
@@ -868,14 +868,14 @@ files = [
 
 [[package]]
 name = "langchain-core"
-version = "0.2.38"
+version = "0.2.39"
 requires_python = "<4.0,>=3.8.1"
 summary = "Building applications with LLMs through composability"
 groups = ["default"]
 dependencies = [
     "PyYAML>=5.3",
     "jsonpatch<2.0,>=1.33",
-    "langsmith<0.2.0,>=0.1.75",
+    "langsmith<0.2.0,>=0.1.112",
     "packaging<25,>=23.2",
     "pydantic<3,>=1; python_full_version < \"3.12.4\"",
     "pydantic<3.0.0,>=2.7.4; python_full_version >= \"3.12.4\"",
@@ -883,8 +883,8 @@ dependencies = [
     "typing-extensions>=4.7",
 ]
 files = [
-    {file = "langchain_core-0.2.38-py3-none-any.whl", hash = "sha256:8a5729bc7e68b4af089af20eff44fe4e7ca21d0e0c87ec21cef7621981fd1a4a"},
-    {file = "langchain_core-0.2.38.tar.gz", hash = "sha256:eb69dbedd344f2ee1f15bcea6c71a05884b867588fadc42d04632e727c1238f3"},
+    {file = "langchain_core-0.2.39-py3-none-any.whl", hash = "sha256:5a5ad4e1c02d13e7021c026b2c7965069ad71ef67b018274cd52bab56e39143e"},
+    {file = "langchain_core-0.2.39.tar.gz", hash = "sha256:73d7b6f0b0212bc8069c3640d69e8d75faa51097784019ffa5c36c617c04acb0"},
 ]
 
 [[package]]
@@ -1054,7 +1054,7 @@ files = [
 
 [[package]]
 name = "mem0ai"
-version = "0.1.12"
+version = "0.1.13"
 requires_python = "<4.0,>=3.9"
 summary = "Long-term memory for AI Agents"
 groups = ["default"]
@@ -1070,8 +1070,8 @@ dependencies = [
     "sqlalchemy<3.0.0,>=2.0.31",
 ]
 files = [
-    {file = "mem0ai-0.1.12-py3-none-any.whl", hash = "sha256:45cc205cb3131fe0096837970f7e5b18694d9a157c2ba0a5532c949e16c85fc9"},
-    {file = "mem0ai-0.1.12.tar.gz", hash = "sha256:65c9b26e90edb38197caea9c96d0f05904c61f9796ac830035baa3bda7ca27a6"},
+    {file = "mem0ai-0.1.13-py3-none-any.whl", hash = "sha256:4ee165d396b348b58cee5c6e98e9034c7b44954359a82657046f3f4f7f8e76a2"},
+    {file = "mem0ai-0.1.13.tar.gz", hash = "sha256:32c9ff334420d604c55af73d5f3e18052d9aa7685d8c22541c511d364f91f11b"},
 ]
 
 [[package]]
