@@ -15,7 +15,7 @@ dependencies = [
   "selenium==4.24.0",
   "lxml==5.3.0",
   "beautifulsoup4==4.12.3",
-  "langchain-openai==0.1.24",
+  "langchain-openai==0.1.25",
   "binaryornot==0.4.4",
   "mem0ai==0.1.13",
   "google-cloud-texttospeech==2.17.2",
