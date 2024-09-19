@@ -1,4 +1,3 @@
-import numpy as np
 from scipy.special import comb
 
 from json import load, dump
@@ -42,4 +41,15 @@ for i in listdir(motion_dir):
         motion_data['Meta']['Duration'])[:int(motion_data['End'] * 60)]
       for j in motion_data["Curves"]
     }
-    dump(processed_motion_data, open(join('./motion_datas', i), 'w'))
+    final_data = {}
+    for k, v in processed_motion_data.items():
+      if k in ['ParamAngleZ']:
+        final_data[k] = v
+        continue
+      elif k in ['ParamAngleX', 'ParamAngleY']:
+        final_data[k] = v*3
+      elif k in ['ParamEyeLOpen', 'ParamEyeLSmile', 'ParamEyeROpen', 'ParamEyeRSmile']:
+        final_data[k] = v*180-90
+      else:
+        final_data[k] = v*90
+    dump(final_data, open(join('./motion_datas', i), 'w'))

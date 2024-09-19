@@ -5,3 +5,4 @@ The half of code is GPT
 
 ## datas
 
+- https://youtu.be/X3brNP6abGU?t=2
