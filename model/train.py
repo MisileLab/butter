@@ -1,32 +1,38 @@
-import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 import numpy as np
 
-# 모델 생성
+from os import listdir
+from json import load
+
 model = Sequential([
-    Dense(64, input_dim=11, activation='relu'),  # 첫 번째 레이어
-    Dense(64, activation='relu'),  # 두 번째 레이어
-    Dense(11)  # 출력 레이어
+  Dense(64, input_dim=9, activation='relu'),
+  Dense(64, activation='relu'),
+  Dense(64, activation='relu'),
+  Dense(9)
 ])
 
-# 모델 컴파일
 model.compile(optimizer='adam', loss='mean_squared_error')
 
-# 데이터 생성 (예시용)
-# 입력 데이터 (예: 100개의 샘플)
-X_train = np.random.uniform(-90, 90, (100, 11))
+datas = [
+  load(open(f'/content/drive/MyDrive/data/{i}'))['data'] for i in listdir('/content/drive/MyDrive/data')
+]
+params = []
+results = []
 
-# 출력 데이터 (예: 100개의 샘플)
-y_train = np.random.uniform(-90, 90, (100, 11))
+for data in datas:
+  for i in range(1, len(data)):
+    params.append(data[i-1])
+    results.append(data[i])
 
-# 모델 훈련
-model.fit(X_train, y_train, epochs=50, batch_size=10, verbose=1)
+params, results = np.array(params), np.array(results)
 
-# 모델 평가
-loss = model.evaluate(X_train, y_train)
+model.fit(params, results, epochs=10, batch_size=10, verbose=1)
+
+loss = model.evaluate(params, results)
 print(f"Loss: {loss}")
 
-# 예측
-predictions = model.predict(X_train)
+predictions = model.predict(np.zeros((1, 9)))
 print(predictions)
+
+model.save('/content/model.keras')

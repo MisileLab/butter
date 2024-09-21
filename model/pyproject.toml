@@ -6,9 +6,9 @@ authors = [
   {name = "MisileLab", email = "misile@duck.com"},
 ]
 dependencies = [
-  "tensorflow==2.17.0",
-  "scipy==1.14.1",
   "scikit-learn==1.5.2",
+  "pyvts==0.3.3",
+  "pip==24.2",
 ]
 requires-python = "==3.12.6"
 readme = "README.md"
