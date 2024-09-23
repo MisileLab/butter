@@ -22,7 +22,7 @@ dependencies = [
   "python-multipart==0.0.10",
   "fastapi[standard]==0.115.0",
   "pip==24.2",
-  "websockets==13.0.1"
+  "websockets==13.1"
 ]
 requires-python = "==3.12.5"
 readme = "README.md"
