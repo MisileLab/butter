@@ -10,7 +10,7 @@ dependencies = [
   "pyvts==0.3.3",
   "pip==24.2",
 ]
-requires-python = ">=3.12.5"
+requires-python = "==3.12.6"
 readme = "README.md"
 license = {text = "MisileLab License"}
 
