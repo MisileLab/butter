@@ -1,0 +1,14 @@
+version: "0.5"
+
+log_level: debug
+
+processes:
+  Server:
+    command: "direnv exec . pdm run fastapi run main.py --port 10002"
+
+  Client:
+    command: "direnv exec . pdm run python main.py"
+    depends_on:
+      Server:
+        condition: process_started
+
