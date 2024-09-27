@@ -40,6 +40,7 @@ async def main():
   await vts_inst.request_authenticate()
   sleep(3)
   print('start')
+  index = 0
   while True:
     try:
       tmp = {}
@@ -47,7 +48,13 @@ async def main():
         data = await vts_inst.request(vts_inst.vts_request.requestParameterValue(i))
         tmp[i] = normalize_value(i, data['data']['value'])
       datas.append(tmp)
-      sleep(0.001)
+      sleep(0.01)
+      if len(datas) >= 1000:
+        print("dumping, 1000 length")
+        dump(datas, open(join(data_dir, f'{name}_{index}.json'), 'w'))
+        print(index)
+        index += 1
+        datas.clear()
     except KeyboardInterrupt:
       break
 
