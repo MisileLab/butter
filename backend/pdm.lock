@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:8e0b2c15001eed87bc7c60e71083edb282249ea374839efc47b8c603cdae784f"
+content_hash = "sha256:a86db74340d103a01250302efc82177eed612676dfd0d0c282e6f6eabe1415f1"
 
 [[metadata.targets]]
 requires_python = "==3.12.5"
@@ -1054,7 +1054,7 @@ files = [
 
 [[package]]
 name = "mem0ai"
-version = "0.1.15"
+version = "0.1.16"
 requires_python = "<4.0,>=3.9"
 summary = "Long-term memory for AI Agents"
 groups = ["default"]
@@ -1070,8 +1070,8 @@ dependencies = [
     "sqlalchemy<3.0.0,>=2.0.31",
 ]
 files = [
-    {file = "mem0ai-0.1.15-py3-none-any.whl", hash = "sha256:b553a8a3491565f9e52de535282304218a3773069cb4d41d2da6b4236a7b06bc"},
-    {file = "mem0ai-0.1.15.tar.gz", hash = "sha256:8f0d6207da36f9ffcb3b1c5ee366f1d0f550daf577d875abc96477309ef233c8"},
+    {file = "mem0ai-0.1.16-py3-none-any.whl", hash = "sha256:fa302457668a9a8994f0865741517f6d88b844f14dd3e8f6c17a30a3eed343a9"},
+    {file = "mem0ai-0.1.16.tar.gz", hash = "sha256:2b4f1f94fc78796b483f6440230a9a68c9815068e16b5092c2b9758635511a2c"},
 ]
 
 [[package]]
@@ -1158,7 +1158,7 @@ files = [
 
 [[package]]
 name = "openai"
-version = "1.47.1"
+version = "1.50.0"
 requires_python = ">=3.7.1"
 summary = "The official Python library for the openai API"
 groups = ["default"]
@@ -1174,8 +1174,8 @@ dependencies = [
     "typing-extensions<5,>=4.11",
 ]
 files = [
-    {file = "openai-1.47.1-py3-none-any.whl", hash = "sha256:34277583bf268bb2494bc03f48ac123788c5e2a914db1d5a23d5edc29d35c825"},
-    {file = "openai-1.47.1.tar.gz", hash = "sha256:62c8f5f478f82ffafc93b33040f8bb16a45948306198bd0cba2da2ecd9cf7323"},
+    {file = "openai-1.50.0-py3-none-any.whl", hash = "sha256:8545b3e37aa28a39e5177adbb6142f3e2b2b9e2889ae002c0ba785d917e466e2"},
+    {file = "openai-1.50.0.tar.gz", hash = "sha256:fc774e36ad96839b9fc14f1097093527b8abd1348ed824e25818309820afa344"},
 ]
 
 [[package]]
