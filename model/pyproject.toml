@@ -9,7 +9,7 @@ dependencies = [
   "scikit-learn==1.5.2",
   "pyvts==0.3.3",
   "pip==24.2",
-  "numpy<2"
+  "numpy<3"
 ]
 requires-python = "==3.12.6"
 readme = "README.md"
