@@ -28,7 +28,7 @@ for data in datas:
 
 params, results = np.array(params), np.array(results)
 
-model.fit(params, results, epochs=2, batch_size=10, verbose=1)
+model.fit(params, results, epochs=10, batch_size=10, verbose=1)
 
 loss = model.evaluate(params, results)
 print(f"Loss: {loss}")
