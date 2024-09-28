@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:68012402f738ba02956e1dc400a622e671dfa74e8df3d0eb49e9255586fb7c9e"
+content_hash = "sha256:2d30c1218051b98cf244e5890be14aac78d47f816a72d7326ea16b96f0a1c5e3"
 
 [[metadata.targets]]
 requires_python = "==3.12.5"
@@ -1158,7 +1158,7 @@ files = [
 
 [[package]]
 name = "openai"
-version = "1.50.1"
+version = "1.50.2"
 requires_python = ">=3.7.1"
 summary = "The official Python library for the openai API"
 groups = ["default"]
@@ -1174,8 +1174,8 @@ dependencies = [
     "typing-extensions<5,>=4.11",
 ]
 files = [
-    {file = "openai-1.50.1-py3-none-any.whl", hash = "sha256:7967fc8372d5e005ad61514586fb286d593facafccedbee00416bc38ee07c2e6"},
-    {file = "openai-1.50.1.tar.gz", hash = "sha256:80cbdf275488894c70bfbad711dbba6f31ea71d579b97e364bfd99cdf030158e"},
+    {file = "openai-1.50.2-py3-none-any.whl", hash = "sha256:822dd2051baa3393d0d5406990611975dd6f533020dc9375a34d4fe67e8b75f7"},
+    {file = "openai-1.50.2.tar.gz", hash = "sha256:3987ae027152fc8bea745d60b02c8f4c4a76e1b5c70e73565fa556db6f78c9e6"},
 ]
 
 [[package]]
