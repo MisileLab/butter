@@ -6,11 +6,11 @@ authors = [
   {name = "MisileLab", email = "misile@duck.com"},
 ]
 dependencies = [
-  "scikit-learn==1.5.2",
   "pyvts==0.3.3",
-  "pip==24.2"
+  "httpx==0.27.2",
+  "httpx-ws==0.6.0",
 ]
-requires-python = "==3.12.6"
+requires-python = ">=3.12.5"
 readme = "README.md"
 license = {text = "MisileLab License"}
 

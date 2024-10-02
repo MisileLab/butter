@@ -1,8 +1,4 @@
 # butter
 
-VTube studio parameter to parameter model\
-The half of code is GPT
+Interact with vtube studio
 
-# datas
-
-- https://www.youtube.com/watch?v=nTWkdhmTyVk

@@ -7,20 +7,21 @@ from loguru import logger
 from openai import OpenAI
 from binaryornot.check import is_binary_string
 from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from pathlib import Path
 from base64 import b64encode, b64decode
 from copy import deepcopy
 from inspect import iscoroutinefunction
+from typing import Any
 
 app = FastAPI()
 wss: list[WebSocket] = []
 
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
 
-async def broadcast(event_type: str, data: str):
+async def broadcast(event_type: str, data: Any):
   for ws in wss:
     await ws.send_json({"type": event_type, "data": data})
 
@@ -106,7 +107,7 @@ async def send_message(
     while tmp_messages[-1].__class__ in [ToolMessage, HumanMessage]:
       logger.debug(f"stripping {tmp_messages[-1]}, because it doesn't ending with ai message")
       tmp_messages = tmp_messages[:-1]
-    summarized = llm_mini.invoke([SystemMessage(summarize_prompt)] + deepcopy(tmp_messages)).content
+    summarized = (await llm_mini.ainvoke([SystemMessage(summarize_prompt)] + deepcopy(tmp_messages))).content
     tmp_messages = messages[60:]
     while tmp_messages[0].__class__ == ToolMessage:
       logger.debug(f"stripping {tmp_messages[0]}, because it's starting with tool message")
@@ -115,7 +116,7 @@ async def send_message(
     messages.extend(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
-  return PlainTextResponse(content=msg.content)
+  return JSONResponse(msg.content)
 
 @app.post("/chat/reset")
 async def reset_chat():
