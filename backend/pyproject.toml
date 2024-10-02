@@ -7,7 +7,7 @@ authors = [
   {name = "Landy"}
 ]
 dependencies = [
-  "tomli==2.0.1",
+  "tomli==2.0.2",
   "loguru==0.7.2",
   "orjson==3.10.7",
   "duckduckgo-search==6.2.13",
