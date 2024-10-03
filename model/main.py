@@ -58,7 +58,7 @@ async def main():
     logger.debug(msg)
     if msg["type"] == "move_model":
       converted_data = [[] for _ in range(len(parameters))]
-      for point in msg["data"]:
+      for point in msg["data"]["points"]:
         logger.debug(point)
         converted_data[0].append(point["face"]["x"])
         converted_data[1].append(point["face"]["y"])
