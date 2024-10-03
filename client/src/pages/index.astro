@@ -53,7 +53,7 @@
                   console.log('try rvc')
                   isrvc = true;
                   fd = new FormData()
-                  fd.append('content', JSON.parse(txt)["message"])
+                  fd.append('content', JSON.parse(txt))
                   fetch(`${BASE_RVC_API_URL}/rvc`, {
                     method: 'POST',
                     body: fd

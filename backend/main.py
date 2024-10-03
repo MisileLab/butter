@@ -1,13 +1,14 @@
 from modules.llm_function import middle_prompt, llm_mini
 from modules.llm import api_key, llm, functions, middle_converting_functions
 from modules.memory import m
+from modules.config import wss
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
 
 from loguru import logger
 from openai import OpenAI
 from binaryornot.check import is_binary_string
 from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
-from fastapi.responses import JSONResponse
+from fastapi.responses import PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from pathlib import Path
@@ -17,7 +18,6 @@ from inspect import iscoroutinefunction
 from typing import Any
 
 app = FastAPI()
-wss: list[WebSocket] = []
 
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
 
@@ -116,7 +116,7 @@ async def send_message(
     messages.extend(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
-  return JSONResponse(msg.content)
+  return PlainTextResponse(msg.content)
 
 @app.post("/chat/reset")
 async def reset_chat():

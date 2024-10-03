@@ -9,8 +9,10 @@ dependencies = [
   "pyvts==0.3.3",
   "httpx==0.27.2",
   "httpx-ws==0.6.0",
+  "loguru==0.7.2",
+  "numpy==2.1.1"
 ]
-requires-python = ">=3.12.5"
+requires-python = "==3.12.7"
 readme = "README.md"
 license = {text = "MisileLab License"}
 
