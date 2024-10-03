@@ -36,7 +36,7 @@ class MoveVTubeModelBase(BaseModel):
 async def move_vtube_model(points: list[Point], second: float):
   "Move Live2D model"
   for ws in wss:
-    await ws.send_json({"type": "move_model", "data": {"points": [point.model_dump() for point in points], "seconds": second}})
+    await ws.send_json({"type": "move_model", "data": {"points": points, "seconds": second}})
   return "success"
 
 functions = {
