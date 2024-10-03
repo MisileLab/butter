@@ -52,25 +52,25 @@ async def main():
   await vts_inst.connect()
   await vts_inst.request_authenticate_token()
   await vts_inst.request_authenticate()
-  async with aconnect_ws(f"{BUTTER_URL}/ws") as b:
-    while True:
-      msg = await b.receive_json()
-      logger.debug(msg)
-      if msg["type"] == "move_model":
-        converted_data = [[] for _ in range(len(parameters))]
-        for point in msg["data"]:
-          logger.debug(point)
-          converted_data[0].append(point["face"]["x"])
-          converted_data[1].append(point["face"]["y"])
-          converted_data[2].append(point["face"]["z"])
-          converted_data[3].append(point["leftEye"]["smiled"])
-          converted_data[4].append(point["leftEye"]["opened"])
-          converted_data[5].append(point["rightEye"]["opened"])
-          converted_data[6].append(point["eyeBall"]["x"])
-          converted_data[7].append(point["eyeBall"]["y"])
-          converted_data[8].append(point["eyeBrow"])
-        converted_data = [bezier_curve(data, 100 * msg["data"]["second"]) for data in converted_data]
-        for i in range(100 * msg["data"]["second"]):
-          await vts_inst.request(vts_inst.vts_request.requestSetMultiParameterValue(parameters, [converted_data[j][i] for j in parameters]))
+  async with aconnect_ws(f"{BUTTER_URL}/event", keepalive_ping_interval_seconds=None, keepalive_ping_timeout_seconds=None) as b:
+    logger.debug("connected")
+    msg = await b.receive_json()
+    logger.debug(msg)
+    if msg["type"] == "move_model":
+      converted_data = [[] for _ in range(len(parameters))]
+      for point in msg["data"]:
+        logger.debug(point)
+        converted_data[0].append(point["face"]["x"])
+        converted_data[1].append(point["face"]["y"])
+        converted_data[2].append(point["face"]["z"])
+        converted_data[3].append(point["leftEye"]["smiled"])
+        converted_data[4].append(point["leftEye"]["opened"])
+        converted_data[5].append(point["rightEye"]["opened"])
+        converted_data[6].append(point["eyeBall"]["x"])
+        converted_data[7].append(point["eyeBall"]["y"])
+        converted_data[8].append(point["eyeBrow"])
+      converted_data = [bezier_curve(data, 100 * msg["data"]["second"]) for data in converted_data]
+      for i in range(100 * msg["data"]["second"]):
+        await vts_inst.request(vts_inst.vts_request.requestSetMultiParameterValue(parameters, [converted_data[j][i] for j in parameters]))
 
-run(main)
+run(main())
