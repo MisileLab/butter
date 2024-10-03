@@ -27,22 +27,22 @@ class Point(BaseModel):
   eyeBall: EyeBall = Field(description="Eye ball of Live2D model")
   eyeBrow: float = Field(description="Eye brow of Live2D model", ge=-1, le=1)
 
-class VTube(BaseModel):
+class MoveVTubeModelBase(BaseModel):
   "Move Live2D model"
   points: list[Point] = Field(description="List of points that will connecting by bezier curve")
   second: float = Field(description="Duration of the movement", ge=0)
 
 @print_it
-async def move_vtube_model(vtube: VTube):
+async def move_vtube_model(vtube: MoveVTubeModelBase):
   "Move Live2D model"
   for ws in wss:
     await ws.send_json({"type": "move_model", "data": [point.model_dump() for point in vtube.points]})
   return "success"
 
 functions = {
-  "move_vtube_model": VTube
+  "MoveVTubeModelBase": MoveVTubeModelBase
 }
 
 middle_converting_functions = {
-  VTube: move_vtube_model
+  MoveVTubeModelBase: move_vtube_model
 }
