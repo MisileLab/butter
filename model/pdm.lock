@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:9b86b132798b731ebf7d2e078af5176c0589a2c889c5562337c4e7496411f626"
+content_hash = "sha256:18d87da9e126d962903e8869c959a4f4d0721241b73282bc267ea67e0c14c7c0"
 
 [[metadata.targets]]
 requires_python = "==3.12.7"
@@ -110,7 +110,7 @@ files = [
 
 [[package]]
 name = "httpx-ws"
-version = "0.6.0"
+version = "0.6.1"
 requires_python = ">=3.8"
 summary = "WebSockets support for HTTPX"
 groups = ["default"]
@@ -121,8 +121,8 @@ dependencies = [
     "wsproto",
 ]
 files = [
-    {file = "httpx_ws-0.6.0-py3-none-any.whl", hash = "sha256:437cfca94519a4e6ae06eb5573192df6c0da85c22b1a19cc1ea0b02b05a51d25"},
-    {file = "httpx_ws-0.6.0.tar.gz", hash = "sha256:60218f531fb474a2143af38568f4b7d94ba356780973443365c8e2c87882bb8c"},
+    {file = "httpx_ws-0.6.1-py3-none-any.whl", hash = "sha256:580588a5164782b5126ee9f3ff822e606ef7b75527fbe88fd419541ee7f0cab7"},
+    {file = "httpx_ws-0.6.1.tar.gz", hash = "sha256:351c66b24a9a6c17800172681f310ff38afcda54e53989ad9c77ebd986380abe"},
 ]
 
 [[package]]
