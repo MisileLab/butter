@@ -24,7 +24,8 @@ dependencies = [
   "websockets==13.1",
   "langchain-openai==0.2.2"
 ]
-requires-python = ">=3.12.5"
+# numpy, httptools, uvloop
+requires-python = "==3.12.5"
 readme = "README.md"
 license = {text = "MisileLab License"}
 
