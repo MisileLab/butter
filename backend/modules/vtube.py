@@ -1,8 +1,5 @@
 from pydantic import BaseModel, Field
 
-from modules.config import wss
-from modules.lib import print_it
-
 class FaceAngle(BaseModel):
   """Live2D model's face angle"""
   x: float = Field(ge=-30,le=30)
@@ -27,22 +24,7 @@ class Point(BaseModel):
   eyeBall: EyeBall = Field(description="Eye ball of Live2D model")
   eyeBrow: float = Field(description="Eye brow of Live2D model", ge=-1, le=1)
 
-class MoveVTubeModelBase(BaseModel):
+class VTubeModel(BaseModel):
   "Move Live2D model"
   points: list[Point] = Field(description="List of points that will connecting by bezier curve")
   second: float = Field(description="Duration of the movement", ge=0)
-
-@print_it
-async def move_vtube_model(points: list[Point], second: float):
-  "Move Live2D model"
-  for ws in wss:
-    await ws.send_json({"type": "move_model", "data": {"points": points, "seconds": second}})
-  return "success"
-
-functions = {
-  "MoveVTubeModelBase": MoveVTubeModelBase
-}
-
-middle_converting_functions = {
-  MoveVTubeModelBase: move_vtube_model
-}

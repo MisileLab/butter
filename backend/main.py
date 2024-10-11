@@ -1,5 +1,6 @@
 from modules.llm_function import middle_prompt, llm_mini
-from modules.llm import api_key, llm, functions, middle_converting_functions
+from modules.llm import api_key, llm, functions, middle_converting_functions, llm_vtube
+from modules.vtube import VTubeModel
 from modules.memory import m
 from modules.config import wss
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
@@ -18,7 +19,6 @@ from inspect import iscoroutinefunction
 from typing import Any
 
 app = FastAPI()
-
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
 
 async def broadcast(event_type: str, data: Any):
@@ -116,7 +116,11 @@ async def send_message(
     messages.extend(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
-  return PlainTextResponse(msg.content)
+  con = msg.content
+  await broadcast("model", await llm_vtube.ainvoke([
+    SystemMessage(prompt + "\nthis is your character, move model based on input and character."),
+    HumanMessage(con)
+  ]))
 
 @app.post("/chat/reset")
 async def reset_chat():

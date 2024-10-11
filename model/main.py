@@ -3,9 +3,38 @@ from loguru import logger
 from pyvts import vts
 import numpy as np
 
-from asyncio import run
-from asyncio import sleep
+from asyncio import run, sleep
 from math import factorial
+from pydantic import BaseModel, Field
+
+class FaceAngle(BaseModel):
+  """Live2D model's face angle"""
+  x: float = Field(ge=-30,le=30)
+  y: float = Field(ge=-30,le=30)
+  z: float = Field(ge=-90,le=90)
+
+class Eye(BaseModel):
+  """Live2D model's eye"""
+  opened: float = Field(ge=0,le=1)
+  smiled: float = Field(ge=0,le=1)
+
+class EyeBall(BaseModel):
+  """Live2D model's eyeball"""
+  x: float = Field(ge=-1,le=1)
+  y: float = Field(ge=-1,le=1)
+
+class Point(BaseModel):
+  "Point of bezier curve"
+  face: FaceAngle = Field(description="Face angle of Live2D model")
+  leftEye: Eye = Field(description="Left eye of Live2D model")
+  rightEye: Eye = Field(description="Right eye of Live2D model")
+  eyeBall: EyeBall = Field(description="Eye ball of Live2D model")
+  eyeBrow: float = Field(description="Eye brow of Live2D model", ge=-1, le=1)
+
+class VTubeModel(BaseModel):
+  "Move Live2D model"
+  points: list[Point] = Field(description="List of points that will connecting by bezier curve")
+  second: float = Field(description="Duration of the movement", ge=0)
 
 BUTTER_URL = "http://192.168.0.159:10002"
 
@@ -56,19 +85,20 @@ async def main():
     while True:
       msg = await b.receive_json()
       logger.debug(msg)
-      if msg["type"] == "move_model":
+      if msg["type"] == "model":
+        data = VTubeModel.model_validate_json(await b.receive_json())
         converted_data = [[] for _ in range(len(parameters))]
-        for point in msg["data"]["points"]:
+        for point in data.points:
           logger.debug(point)
-          converted_data[0].append(point["face"]["x"])
-          converted_data[1].append(point["face"]["y"])
-          converted_data[2].append(point["face"]["z"])
-          converted_data[3].append(point["leftEye"]["smiled"])
-          converted_data[4].append(point["leftEye"]["opened"])
-          converted_data[5].append(point["rightEye"]["opened"])
-          converted_data[6].append(point["eyeBall"]["x"])
-          converted_data[7].append(point["eyeBall"]["y"])
-          converted_data[8].append(point["eyeBrow"])
+          converted_data[0].append(point.face.x)
+          converted_data[1].append(point.face.y)
+          converted_data[2].append(point.face.z)
+          converted_data[3].append(point.leftEye.smiled)
+          converted_data[4].append(point.leftEye.opened)
+          converted_data[5].append(point.rightEye.opened)
+          converted_data[6].append(point.eyeBall.x)
+          converted_data[7].append(point.eyeBall.y)
+          converted_data[8].append(point.eyeBrow)
         converted_data = [bezier_curve(data, int(100 * msg["data"]["seconds"])) for data in converted_data]
         for i in range(int(100 * msg["data"]["seconds"])):
           await vts_inst.request(vts_inst.vts_request.requestSetMultiParameterValue(parameters, [converted_data[j][i] for j in range(len(parameters))]))
