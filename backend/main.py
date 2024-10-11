@@ -117,10 +117,17 @@ async def send_message(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
   con = msg.content
-  await broadcast("model", await llm_vtube.ainvoke([
+  _con = await llm_vtube.ainvoke([
     SystemMessage(prompt + "\nthis is your character, move model based on input and character."),
     HumanMessage(con)
-  ]))
+  ])
+  logger.debug(_con)
+  if not isinstance(_con, VTubeModel):
+    raise HTTPException(
+      status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+      detail="VTubeModel is not returned"
+    )
+  await broadcast("model", _con.model_dump())
 
 @app.post("/chat/reset")
 async def reset_chat():
