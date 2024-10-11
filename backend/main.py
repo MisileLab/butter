@@ -119,7 +119,7 @@ async def send_message(
   con = msg.content
   _con = await llm_vtube.ainvoke([
     SystemMessage(prompt + "\nthis is your character, move model based on input and character."),
-    HumanMessage(con)
+    HumanMessage(f"question: {content}, answer: {con}")
   ])
   logger.debug(_con)
   if not isinstance(_con, VTubeModel):
