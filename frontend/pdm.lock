@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:4e3c0d1b17ab545958093088d6181fd321f0aebc93cea194129d80aac3b7459f"
+content_hash = "sha256:97908e075a7398350e780d7e10911618afc118f529e695f64366845849679a49"
 
 [[metadata.targets]]
 requires_python = "~=3.12.5"
@@ -168,7 +168,7 @@ files = [
 
 [[package]]
 name = "gradio"
-version = "5.0.1"
+version = "5.0.2"
 requires_python = ">=3.10"
 summary = "Python library for easily interacting with trained machine learning models"
 groups = ["default"]
@@ -200,8 +200,8 @@ dependencies = [
     "uvicorn>=0.14.0; sys_platform != \"emscripten\"",
 ]
 files = [
-    {file = "gradio-5.0.1-py3-none-any.whl", hash = "sha256:db731c154372599760ba55cc885872da8fee6029cc2cf16099e1471840dbede4"},
-    {file = "gradio-5.0.1.tar.gz", hash = "sha256:fb05b2286eda447d9750864049bf1af8f6d835137629c41735ab2d24c4cf7cca"},
+    {file = "gradio-5.0.2-py3-none-any.whl", hash = "sha256:b9077078d643d0647d2edb03ef20c81561aaaccffab6050ac5a4f26c7f616ab3"},
+    {file = "gradio-5.0.2.tar.gz", hash = "sha256:ba49bd8d58dd74302e019aa5c0cd8c351d534ec2ea9cbc83e944be7b2f3cc56c"},
 ]
 
 [[package]]
