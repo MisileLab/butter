@@ -128,7 +128,7 @@ async def send_message(
       detail="VTubeModel is not returned"
     )
   await broadcast("model", _con.model_dump())
-  return con
+  return PlainTextResponse(con)
 
 @app.post("/chat/reset")
 async def reset_chat():
