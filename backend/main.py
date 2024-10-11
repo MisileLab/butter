@@ -29,6 +29,7 @@ prompt = Path("./prompts/prompt").read_text()
 summarize_prompt = Path("./prompts/summarize_prompt").read_text()
 messages: list[SystemMessage | AIMessage | ToolMessage | HumanMessage] = [SystemMessage(prompt)]
 whisper = OpenAI(api_key=api_key)
+current_points = None
 
 @app.post("/chat/send")
 async def send_message(
@@ -118,7 +119,7 @@ async def send_message(
     )
   con = msg.content
   _con = await llm_vtube.ainvoke([
-    SystemMessage(prompt + "\nthis is your character, move model based on input and character."),
+    SystemMessage(prompt + f"\nthis is your character, move model based on input and character.\n{f'current model parameter is {current_points.model_dump()}' if current_points is not None else ''}"),
     HumanMessage(f"question: {content}, answer: {con}")
   ])
   logger.debug(_con)
@@ -128,6 +129,8 @@ async def send_message(
       detail="VTubeModel is not returned"
     )
   await broadcast("model", _con.model_dump())
+  global current_points
+  current_points = _con
   return PlainTextResponse(con)
 
 @app.post("/chat/reset")
