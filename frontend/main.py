@@ -35,7 +35,7 @@ def confirm(user_v, prompt_v, middle_prompt_v, summarize_prompt_v):
 async def generate_message(content: str, _):
   if user is None or user == "":
     raise gr.Error("no user")
-  file_list = {'files': (f, open(f, 'rb'), guess_type(f)) for f in tempv2["files"]}
+  file_list = {'files': (f, open(f, 'rb')) for f in tempv2["files"]}
   print(file_list)
   if file_list != []:
     res = post(f"{BASE_URL}/chat/send", data={
