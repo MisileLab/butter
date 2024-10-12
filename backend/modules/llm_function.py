@@ -143,10 +143,10 @@ async def lens(question: str, image: str) -> str:
   search = get("https://serpapi.com/search", params=params, timeout=10.0)
   minio.remove_object("butter", Path(image).name)
   logger.debug(search.json())
-  if search.is_error or search.json().get("inline_images", None) is None:
+  if search.is_error or search.json().get("image_results", None) is None:
     logger.error(search.json())
     return "failed"
-  return await summarize_and_answer(str(search.json()['inline_images']), "summarize this", no_describe_image=True)
+  return await summarize_and_answer(str(search.json().get("inline_images", search.json()['image_results'])), "summarize this", no_describe_image=True)
 
 class sendRequestBase(BaseModel):
   """send request to url and return the summarized content with llm, you can send the question to llm."""
