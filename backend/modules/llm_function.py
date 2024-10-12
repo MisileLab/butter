@@ -165,7 +165,7 @@ class lensBase(BaseModel):
   """describe image and gives information about it"""
   question: str = Field(description="question that gives to llm and search engine")
   # you know it, it's duct tape
-  image: str = Field(description="url or local file of image (url must starts with https, path must be starts with /tmp/gradio)")
+  image: str = Field(description="url or local file of image (if image is external must starts with https, if image is attachment must be starts with /tmp/gradio)")
 
 functions = {
   "sendRequestBase": sendRequestBase,
