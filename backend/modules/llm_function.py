@@ -16,7 +16,7 @@ from openai import BadRequestError
 
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote
 
 middle_prompt = Path("./prompts/middle_prompt").read_text()
 llm_mini = ChatOpenAI(model="gpt-4o-mini", api_key=api_key)
@@ -135,7 +135,7 @@ async def lens(question: str, image: str) -> str:
   params = {
     "engine": "google_reverse_image",
     "q": question,
-    "image_url": f"https://{config["minio"]["url"]}/butter/{quote_plus(Path(image).name)}",
+    "image_url": f"https://{config["minio"]["url"]}/butter/{quote(Path(image).name)}",
     "api_key": serpapi_key
   }
 
