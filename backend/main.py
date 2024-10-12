@@ -44,6 +44,8 @@ async def send_message(
   logger.info(f"{name}: {content} with {files}")
   images = []
   result = f"here's the message of {name}:"
+  if files is None:
+    files = []
   if False in [is_binary_string(Path(i.filename).read_bytes()) for i in files if i.filename is not None]:
     result += "\n=====attachments====="
   for i in files:
@@ -70,7 +72,6 @@ async def send_message(
         else:
           logger.debug(f"{fname} is not valid")
           continue
-        logger.debug(f"data:image/{ext};base64,{b64encode(Path(i.filename).read_bytes()).decode('utf-8')}")
         images.append(
           f"data:image/{ext};base64,{b64encode(Path(i.filename).read_bytes()).decode('utf-8')}"
         )

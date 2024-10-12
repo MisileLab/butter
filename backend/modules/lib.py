@@ -22,7 +22,7 @@ def print_it(func):
 
 def is_binary_string(content: bytes) -> bool:
   try:
-    logger.debug(content.decode('utf-8'))
+    content.decode('utf-8')
     return False
   except UnicodeDecodeError:
     return True
