@@ -45,7 +45,8 @@ async def send_message(
   images = []
   result = f"here's the message of {name}:"
   if files is not None:
-    result += "\n=====attachments====="
+    if False in [is_binary_string(await i.read()) for i in files]:
+      result += "\n=====attachments====="
     for i in files:
       if i.filename is None:
         logger.debug("No filename, so skip")
@@ -69,6 +70,7 @@ async def send_message(
           else:
             logger.debug(f"{fname} is not valid")
             continue
+          logger.debug(f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}")
           images.append(
             f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}"
           )
@@ -79,7 +81,7 @@ async def send_message(
     result += f"=====content start=====\n{content}\n=====content end====="
   messages.append(
     HumanMessage(
-      [{"type": "text", "text": result}] + [{"type": "image_url", "image_url": {"url": i}} for i in images] # type: ignore it is valid, trust
+      [{"type": "text", "text": result}] + [{"type": "image_url", "image_url": {"url": i, "detail": "high"}} for i in images] # type: ignore it is valid, trust
     )
   )
   logger.debug("stage 1: give message to llm")
@@ -117,6 +119,7 @@ async def send_message(
     messages.extend(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
+  global current_points
   con = msg.content
   _con = await llm_vtube.ainvoke([
     SystemMessage(prompt + f"\nthis is your character, move model based on input and character.\n{f'current model parameter is {current_points.model_dump()}' if current_points is not None else ''}"),
@@ -129,7 +132,6 @@ async def send_message(
       detail="VTubeModel is not returned"
     )
   await broadcast("model", _con.model_dump())
-  global current_points
   current_points = _con
   return PlainTextResponse(con)
 
