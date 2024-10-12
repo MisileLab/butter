@@ -130,7 +130,7 @@ async def lens(question: str, image: str) -> str:
   if not image.startswith("https"):
     if not Path(image).exists():
       return "image not found"
-    minio.fput_object("butter", image, Path(image).name)
+    minio.fput_object("butter", Path(image).name, image)
   params = {
     "engine": "google_reverse_image",
     "q": question,
