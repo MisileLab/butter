@@ -125,7 +125,7 @@ async def send_message(
   global current_points
   con = msg.content
   _con = await llm_vtube.ainvoke([
-    SystemMessage(prompt + f"\nthis is your character, move model based on input and character.\n{f'current model parameter is {current_points.model_dump()}' if current_points is not None else ''}"),
+    SystemMessage(prompt + f"\nthis is your character, move model based on input and character.\nthe speaker is infront of you.\n{f'current model parameter is {current_points.model_dump()}' if current_points is not None else ''}"),
     HumanMessage(f"question: {content}, answer: {con}")
   ])
   logger.debug(_con)
