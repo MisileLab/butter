@@ -134,7 +134,7 @@ async def lens(query: str, image: str) -> str:
   params = {
     "engine": "google_reverse_image",
     "q": query,
-    "image_url": f"{config["minio"]["host"]}/butter/{Path(image).name}",
+    "image_url": f"{config["minio"]["url"]}/butter/{Path(image).name}",
     "api_key": serpapi_key
   }
 
