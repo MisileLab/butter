@@ -44,38 +44,38 @@ async def send_message(
   logger.info(f"{name}: {content} with {files}")
   images = []
   result = f"here's the message of {name}:"
-  if files is not None:
-    if False in [is_binary_string(await i.read()) for i in files]:
-      result += "\n=====attachments====="
-    for i in files:
-      if i.filename is None:
-        logger.debug("No filename, so skip")
-        continue
-      if is_binary_string(await i.read()):
-        if True in [i.filename.startswith(v) for v in [".mp3", ".mp4"]]:
-          transcripted = whisper.audio.transcriptions.create(
-            file = i.file,
-            model = "whisper-1"
-          )
-          result += f"{i.filename}(audio)'s transcripted text: {transcripted.text}"
-        else:
-          fname = i.filename
-          ext = ""
-          if fname.endswith(".png"):
-            ext = "png"
-          elif fname.endswith(".jpg") or fname.endswith(".jpeg"):
-            ext = "jpeg"
-          elif fname.endswith(".webp"):
-            ext = "webp"
-          else:
-            logger.debug(f"{fname} is not valid")
-            continue
-          logger.debug(f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}")
-          images.append(
-            f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}"
-          )
+  if False in [is_binary_string(await i.read()) for i in files]:
+    result += "\n=====attachments====="
+  for i in files:
+    if i.filename is None:
+      logger.debug("No filename, so skip")
+      continue
+    if is_binary_string(await i.read()):
+      if True in [i.filename.startswith(v) for v in [".mp3", ".mp4"]]:
+        transcripted = whisper.audio.transcriptions.create(
+          file = i.file,
+          model = "whisper-1"
+        )
+        result += f"{i.filename}(audio)'s transcripted text: {transcripted.text}"
       else:
-        result += f"{i.filename}(text)'s content: {(await i.read()).decode('utf-8')}"
+        fname = i.filename
+        ext = ""
+        if fname.endswith(".png"):
+          ext = "png"
+        elif fname.endswith(".jpg") or fname.endswith(".jpeg"):
+          ext = "jpeg"
+        elif fname.endswith(".webp"):
+          ext = "webp"
+        else:
+          logger.debug(f"{fname} is not valid")
+          continue
+        logger.debug(f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}")
+        images.append(
+          f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}"
+        )
+    else:
+      result += f"{i.filename}(text)'s content: {(await i.read()).decode('utf-8')}"
+  if False in [is_binary_string(await i.read()) for i in files]:
     result += "=====attachments end====="
   if content:
     result += f"=====content start=====\n{content}\n=====content end====="
