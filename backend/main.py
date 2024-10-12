@@ -47,6 +47,7 @@ async def send_message(
   if False in [is_binary_string(await i.read()) for i in files]:
     result += "\n=====attachments====="
   for i in files:
+    logger.debug(f"{i.filename}, {is_binary_string(await i.read())}")
     if i.filename is None:
       logger.debug("No filename, so skip")
       continue
