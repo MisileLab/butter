@@ -139,7 +139,7 @@ async def lens(question: str, image: str) -> str:
     "api_key": serpapi_key
   }
 
-  search = get("https://serpapi.com/search", params=params)
+  search = get("https://serpapi.com/search", params=params, timeout=10.0)
   minio.remove_object("butter", Path(image).name)
   logger.debug(search.json())
   if search.is_error:
