@@ -143,7 +143,7 @@ async def lens(question: str, image: str) -> str:
   search = get("https://serpapi.com/search", params=params, timeout=10.0)
   minio.remove_object("butter", Path(image).name)
   logger.debug(search.json())
-  if search.is_error:
+  if search.is_error or search.json().get("inline_images", None) is None:
     logger.error(search.json())
     return "failed"
   return await summarize_and_answer(str(search.json()['inline_images']), question, no_describe_image=True)
