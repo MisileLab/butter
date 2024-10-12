@@ -146,7 +146,7 @@ async def lens(question: str, image: str) -> str:
   if search.is_error:
     logger.error(search.json())
     return "failed"
-  return await summarize_and_answer(str(search.json()), question, no_describe_image=True)
+  return await summarize_and_answer(str(search.json()['inline_images']), question, no_describe_image=True)
 
 class sendRequestBase(BaseModel):
   """send request to url and return the summarized content with llm, you can send the question to llm."""
