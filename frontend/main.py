@@ -3,7 +3,6 @@ from httpx import get, post
 
 from datetime import datetime
 from pathlib import Path
-from mimetypes import guess_type
 
 try:
   user # type: ignore

@@ -16,7 +16,6 @@ class FaceAngle(BaseModel):
 class Eye(BaseModel):
   """Live2D model's eye"""
   opened: float = Field(ge=0,le=1)
-  smiled: float = Field(ge=0,le=1)
 
 class EyeBall(BaseModel):
   """Live2D model's eyeball"""
@@ -30,6 +29,7 @@ class Point(BaseModel):
   rightEye: Eye = Field(description="Right eye of Live2D model")
   eyeBall: EyeBall = Field(description="Eye ball of Live2D model")
   eyeBrow: float = Field(description="Eye brow of Live2D model", ge=-1, le=1)
+  smiled: float = Field(description="Smile of Live2D model", ge=0, le=1)
 
 class VTubeModel(BaseModel):
   "Move Live2D model"
@@ -84,23 +84,33 @@ async def main():
     logger.debug("connected")
     while True:
       msg = await b.receive_json()
-      logger.debug(msg)
+      logger.debug(msg["type"])
       if msg["type"] == "model":
-        data = VTubeModel.model_validate_json(await b.receive_json())
+        logger.info("hello")
+        data = VTubeModel.model_validate(msg["data"])
+        logger.info(data)
+        logger.info(msg["data"]["second"])
         converted_data = [[] for _ in range(len(parameters))]
         for point in data.points:
           logger.debug(point)
           converted_data[0].append(point.face.x)
           converted_data[1].append(point.face.y)
           converted_data[2].append(point.face.z)
-          converted_data[3].append(point.leftEye.smiled)
+          converted_data[3].append(point.smiled)
           converted_data[4].append(point.leftEye.opened)
           converted_data[5].append(point.rightEye.opened)
           converted_data[6].append(point.eyeBall.x)
           converted_data[7].append(point.eyeBall.y)
           converted_data[8].append(point.eyeBrow)
-        converted_data = [bezier_curve(data, int(100 * msg["data"]["seconds"])) for data in converted_data]
-        for i in range(int(100 * msg["data"]["seconds"])):
+        d = []
+        for i in parameters:
+          d.append((await vts_inst.request(vts_inst.vts_request.requestParameterValue(i)))['data']['value'])
+        logger.debug(d)
+        converted_data.insert(0, d)
+        converted_data = [bezier_curve(data, int(100 * msg["data"]["second"])) for data in converted_data]
+        logger.debug(converted_data)
+        for i in range(int(100 * msg["data"]["second"])):
+          logger.debug(i)
           await vts_inst.request(vts_inst.vts_request.requestSetMultiParameterValue(parameters, [converted_data[j][i] for j in range(len(parameters))]))
           await sleep(0.01)
 

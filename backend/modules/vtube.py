@@ -9,7 +9,6 @@ class FaceAngle(BaseModel):
 class Eye(BaseModel):
   """Live2D model's eye"""
   opened: float = Field(description="0~1")
-  smiled: float = Field(description="0~1")
 
 class EyeBall(BaseModel):
   """Live2D model's eyeball"""
@@ -23,6 +22,7 @@ class Point(BaseModel):
   rightEye: Eye = Field(description="Right eye of Live2D model")
   eyeBall: EyeBall = Field(description="Eye ball of Live2D model")
   eyeBrow: float = Field(description="Eye brow of Live2D model (-1~1)")
+  smiled: float = Field(description="0~1")
 
 class VTubeModel(BaseModel):
   "Move Live2D model"
