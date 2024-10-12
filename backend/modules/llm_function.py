@@ -146,7 +146,7 @@ async def lens(question: str, image: str) -> str:
   if search.is_error or search.json().get("inline_images", None) is None:
     logger.error(search.json())
     return "failed"
-  return await summarize_and_answer(str(search.json()['inline_images']), question, no_describe_image=True)
+  return await summarize_and_answer(str(search.json()['inline_images']), "summarize this", no_describe_image=True)
 
 class sendRequestBase(BaseModel):
   """send request to url and return the summarized content with llm, you can send the question to llm."""
@@ -165,7 +165,7 @@ class searchInternetBase(BaseModel):
 
 class lensBase(BaseModel):
   """describe image and gives information about it"""
-  question: str = Field(description="question that gives to llm and search engine")
+  question: str = Field(description="question that gives to search engine")
   # you know it, it's duct tape
   image: str = Field(description="url or local file of image (if image is external must starts with https, if image is attachment must be starts with /tmp/gradio)")
 
