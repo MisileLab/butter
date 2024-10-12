@@ -43,7 +43,8 @@ async def describe_image(image_url: str, question: str):
 
 llm_describe = ChatOpenAI(model="gpt-4o-mini", api_key=api_key).bind_tools([describeImageBase])
 
-async def summarize_and_answer(content: str, question: str) -> str:
+async def summarize_and_answer(content: str, question: str, no_describe_image: bool = False) -> str:
+  real_llm = llm_mini if no_describe_image else llm_describe
   finalvalue: list[str] = []
   end = False
   while True:
@@ -61,13 +62,13 @@ async def summarize_and_answer(content: str, question: str) -> str:
       SystemMessage(middle_prompt),
       HumanMessage(f"content: {content}\nquestion: {question}\n{summarized}")
     ]
-    tmp: AIMessage = await llm_describe.ainvoke(tmpmsg) # type: ignore nah, its compatible with BaseMessage
+    tmp: AIMessage = await real_llm.ainvoke(tmpmsg) # type: ignore nah, its compatible with BaseMessage
     tmpmsg.append(tmp)
     while tmp.tool_calls:
       logger.debug(tmp.tool_calls)
       for i in tmp.tool_calls:
         tmpmsg.append(ToolMessage(tool_call_id=i["id"], content=await describe_image(**i["args"])))
-      tmp = await llm_describe.ainvoke(tmpmsg) # type: ignore same as above
+      tmp = await real_llm.ainvoke(tmpmsg) # type: ignore same as above
     tmpmsg.append(tmp)
     if not isinstance(tmp.content, str):
       logger.error("summarize and answer doesn't return string")
@@ -145,7 +146,7 @@ async def lens(question: str, image: str) -> str:
   if search.is_error:
     logger.error(search.json())
     return "failed"
-  return await summarize_and_answer(str(search.json()), question)
+  return await summarize_and_answer(str(search.json()), question, no_describe_image=True)
 
 class sendRequestBase(BaseModel):
   """send request to url and return the summarized content with llm, you can send the question to llm."""
