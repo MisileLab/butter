@@ -44,14 +44,14 @@ async def send_message(
   logger.info(f"{name}: {content} with {files}")
   images = []
   result = f"here's the message of {name}:"
-  if False in [is_binary_string(await i.read()) for i in files]:
+  if False in [is_binary_string(Path(i.filename).read_bytes()) for i in files if i.filename is not None]:
     result += "\n=====attachments====="
   for i in files:
-    logger.debug(f"{i.filename}, {is_binary_string(await i.read())}")
     if i.filename is None:
       logger.debug("No filename, so skip")
       continue
-    if is_binary_string(await i.read()):
+    logger.debug(f"{i.filename}, {is_binary_string(Path(i.filename).read_bytes())}")
+    if is_binary_string(Path(i.filename).read_bytes()):
       if True in [i.filename.startswith(v) for v in [".mp3", ".mp4"]]:
         transcripted = whisper.audio.transcriptions.create(
           file = i.file,
@@ -70,13 +70,13 @@ async def send_message(
         else:
           logger.debug(f"{fname} is not valid")
           continue
-        logger.debug(f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}")
+        logger.debug(f"data:image/{ext};base64,{b64encode(Path(i.filename).read_bytes()).decode('utf-8')}")
         images.append(
-          f"data:image/{ext};base64,{b64encode(await i.read()).decode('utf-8')}"
+          f"data:image/{ext};base64,{b64encode(Path(i.filename).read_bytes()).decode('utf-8')}"
         )
     else:
-      result += f"{i.filename}(text)'s content: {(await i.read()).decode('utf-8')}"
-  if False in [is_binary_string(await i.read()) for i in files]:
+      result += f"{i.filename}(text)'s content: {(Path(i.filename).read_bytes()).decode('utf-8')}"
+  if False in [is_binary_string(Path(i.filename).read_bytes()) for i in files if i.filename is not None]:
     result += "=====attachments end====="
   if content:
     result += f"=====content start=====\n{content}\n=====content end====="
