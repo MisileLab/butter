@@ -140,6 +140,7 @@ async def lens(question: str, image: str) -> str:
 
   search = get("https://serpapi.com/search", params=params)
   minio.remove_object("butter", Path(image).name)
+  logger.debug(search.json())
   if search.is_error:
     logger.error(search.json())
     return "failed"
