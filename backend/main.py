@@ -3,11 +3,11 @@ from modules.llm import api_key, llm, functions, middle_converting_functions, ll
 from modules.vtube import VTubeModel
 from modules.memory import m
 from modules.config import wss
+from modules.lib import is_binary_string
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
 
 from loguru import logger
 from openai import OpenAI
-from binaryornot.check import is_binary_string
 from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
 from fastapi.responses import PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware

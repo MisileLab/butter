@@ -19,3 +19,10 @@ def print_it(func):
     logger.debug(f"type is {type(res)}")
     return res
   return wrapper if iscoroutinefunction(func) else non_async_wrapper
+
+def is_binary_string(content: bytes) -> bool:
+  try:
+    content.decode('utf-8')
+    return False
+  except UnicodeDecodeError:
+    return True
