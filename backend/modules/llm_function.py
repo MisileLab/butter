@@ -126,14 +126,14 @@ async def search_internet(query: str, question: str) -> str:
   return f
 
 @print_it
-async def lens(query: str, image: str) -> str:
+async def lens(question: str, image: str) -> str:
   if not image.startswith("https"):
     if not Path(image).exists():
       return "image not found"
     minio.fput_object("butter", Path(image).name, image)
   params = {
     "engine": "google_reverse_image",
-    "q": query,
+    "q": question,
     "image_url": f"{config["minio"]["url"]}/butter/{Path(image).name}",
     "api_key": serpapi_key
   }
@@ -142,7 +142,7 @@ async def lens(query: str, image: str) -> str:
   if search.is_error:
     logger.error(search.json())
     return "failed"
-  return await summarize_and_answer(str(search.json()), query)
+  return await summarize_and_answer(str(search.json()), question)
 
 class sendRequestBase(BaseModel):
   """send request to url and return the summarized content with llm, you can send the question to llm."""
@@ -161,8 +161,9 @@ class searchInternetBase(BaseModel):
 
 class lensBase(BaseModel):
   """describe image and gives information about it"""
-  query: str = Field(description="query to search")
-  image: str = Field(description="url or local file of image (url must starts with https, path must be local path)")
+  question: str = Field(description="question that gives to llm and search engine")
+  # you know it, it's duct tape
+  image: str = Field(description="url or local file of image (url must starts with https, path must be starts with /tmp/gradio)")
 
 functions = {
   "sendRequestBase": sendRequestBase,
