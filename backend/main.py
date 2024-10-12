@@ -46,7 +46,7 @@ async def send_message(
   result = f"here's the message of {name}:"
   if files is None:
     files = []
-  if False in [is_binary_string(Path(i.filename).read_bytes()) for i in files if i.filename is not None]:
+  if files != []:
     result += "\n=====attachments====="
   for i in files:
     if i.filename is None:
@@ -72,12 +72,13 @@ async def send_message(
         else:
           logger.debug(f"{fname} is not valid")
           continue
+        result += f"{i.filename}(image) is attached"
         images.append(
           f"data:image/{ext};base64,{b64encode(Path(i.filename).read_bytes()).decode('utf-8')}"
         )
     else:
       result += f"{i.filename}(text)'s content: {(Path(i.filename).read_bytes()).decode('utf-8')}"
-  if False in [is_binary_string(Path(i.filename).read_bytes()) for i in files if i.filename is not None]:
+  if files != []:
     result += "=====attachments end====="
   if content:
     result += f"=====content start=====\n{content}\n=====content end====="

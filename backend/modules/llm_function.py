@@ -1,4 +1,4 @@
-from .config import api_key
+from .config import api_key, config, minio, serpapi_key
 from .lib import print_it
 
 from langchain_openai import ChatOpenAI
@@ -6,7 +6,7 @@ from langchain_core.messages import AIMessage, ToolMessage, SystemMessage, Human
 
 from loguru import logger
 from duckduckgo_search import AsyncDDGS
-from httpx import AsyncClient
+from httpx import AsyncClient, get
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
@@ -125,6 +125,25 @@ async def search_internet(query: str, question: str) -> str:
     return "failed"
   return f
 
+@print_it
+async def lens(query: str, image: str) -> str:
+  if not image.startswith("https"):
+    if not Path(image).exists():
+      return "image not found"
+    minio.fput_object("butter", Path(image).name, image)
+  params = {
+    "engine": "google_reverse_image",
+    "q": query,
+    "image_url": f"{config["minio"]["host"]}/butter/{Path(image).name}",
+    "api_key": serpapi_key
+  }
+
+  search = get("https://serpapi.com/search", params=params)
+  if search.is_error:
+    logger.error(search.json())
+    return "failed"
+  return await summarize_and_answer(str(search.json()), query)
+
 class sendRequestBase(BaseModel):
   """send request to url and return the summarized content with llm, you can send the question to llm."""
   url: str = Field(description="url to send request")
@@ -140,16 +159,23 @@ class searchInternetBase(BaseModel):
   query: str = Field(description="query to search")
   question: str = Field(description="question to ask llm")
 
+class lensBase(BaseModel):
+  """describe image and gives information about it"""
+  query: str = Field(description="query to search")
+  image: str = Field(description="url or local file of image (url must starts with https, path must be local path)")
+
 functions = {
   "sendRequestBase": sendRequestBase,
   "sendRequestUsingBrowserBase": sendRequestUsingBrowserBase,
   "searchInternetBase": searchInternetBase,
-  "describeImageBase": describeImageBase
+  "describeImageBase": describeImageBase,
+  "lensBase": lensBase
 }
 
 middle_converting_functions = {
   sendRequestBase: send_request,
   sendRequestUsingBrowserBase: send_request_using_browser,
   searchInternetBase: search_internet,
-  describeImageBase: describe_image
+  describeImageBase: describe_image,
+  lensBase: lens
 }
