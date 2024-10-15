@@ -21,7 +21,7 @@ dependencies = [
   "pip==24.2",
   "websockets==13.1",
   "langchain-openai==0.2.2",
-  "duckduckgo-search==6.3.0",
+  "duckduckgo-search==6.3.1",
   "minio==7.2.9"
 ]
 # numpy, httptools, uvloop
