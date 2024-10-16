@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:cbfac8307e4099ffd64dd5f6ce0fb114d06c43daedb555a641031a5e7a24aa32"
+content_hash = "sha256:370f987cd37aa99988e1f318d3f7cb2982908ca0a831ef57d31fc12d7b4045e0"
 
 [[metadata.targets]]
 requires_python = "==3.12.5"
@@ -342,7 +342,7 @@ files = [
 
 [[package]]
 name = "duckduckgo-search"
-version = "6.3.1"
+version = "6.3.2"
 requires_python = ">=3.8"
 summary = "Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine."
 groups = ["default"]
@@ -351,8 +351,8 @@ dependencies = [
     "primp>=0.6.4",
 ]
 files = [
-    {file = "duckduckgo_search-6.3.1-py3-none-any.whl", hash = "sha256:408fbfe07ae084eca5d0b5ebd0234187362d9e507ca1549f264104ce13006b58"},
-    {file = "duckduckgo_search-6.3.1.tar.gz", hash = "sha256:f43c7fa61518537bb5327aa9411520b04baa7c32b199d816b97d38f451f71824"},
+    {file = "duckduckgo_search-6.3.2-py3-none-any.whl", hash = "sha256:cd631275292460d590d1d496995d002bf2fe6db9752713fab17b9e95924ced98"},
+    {file = "duckduckgo_search-6.3.2.tar.gz", hash = "sha256:53dbf45f8749bfc67483eb9f281f2e722a5fe644d61c54ed9e551d26cb6bcbf2"},
 ]
 
 [[package]]
