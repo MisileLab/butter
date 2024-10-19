@@ -20,7 +20,7 @@ dependencies = [
   "fastapi[standard]==0.115.2",
   "pip==24.2",
   "websockets==13.1",
-  "langchain-openai==0.2.2",
+  "langchain-openai==0.2.3",
   "duckduckgo-search==6.3.2",
   "minio==7.2.9"
 ]
