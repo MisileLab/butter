@@ -12,8 +12,8 @@ importers:
         specifier: 0.0.5
         version: 0.0.5
       '@ricky0123/vad-web':
-        specifier: 0.0.18
-        version: 0.0.18
+        specifier: 0.0.19
+        version: 0.0.19
       astro:
         specifier: 4.16.6
         version: 4.16.6(@types/node@22.7.4)(rollup@4.22.5)(typescript@5.6.3)
@@ -499,8 +499,8 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@ricky0123/vad-web@0.0.18':
-    resolution: {integrity: sha512-qaw1r8PsFADtxCRybieKTrhI/eO0JaEVH5oy0/oJS/bpq8eJu9mh1myCOR1ncBYYOzEkiJNJRQ638yG6X6WUNA==}
+  '@ricky0123/vad-web@0.0.19':
+    resolution: {integrity: sha512-AEfWACMRZD5OnojNesNibWAdJPk0TVoOLGjD3B22bb4Fc3LCS0rWYfGuI7nLZz1l99IbHQeVICSR9amNNHdj1w==}
 
   '@rollup/pluginutils@5.1.2':
     resolution: {integrity: sha512-/FIdS3PyZ39bjZlwqFnWqCOVnW7o963LtKMwQOD0NhQqw22gSr2YY1afu3FxRip4ZCZNsD5jq6Aaz6QV3D/Njw==}
@@ -2406,7 +2406,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@ricky0123/vad-web@0.0.18':
+  '@ricky0123/vad-web@0.0.19':
     dependencies:
       onnxruntime-web: 1.19.2
 
