@@ -14,7 +14,7 @@ dependencies = [
   "selenium==4.25.0",
   "lxml==5.3.0",
   "beautifulsoup4==4.12.3",
-  "mem0ai==0.1.21",
+  "mem0ai==0.1.22",
   "google-cloud-texttospeech==2.18.0",
   "python-multipart==0.0.13",
   "fastapi[standard]==0.115.2",
