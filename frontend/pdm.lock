@@ -5,10 +5,10 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:2dfe4889012e4eb0be1b1de6605af3568ceb16dfd400d9d188312f7be145d501"
+content_hash = "sha256:c5a75135186a2efe8240ecddd573a0b34818261c56e46a3d833ec4ca668499bc"
 
 [[metadata.targets]]
-requires_python = "~=3.12.5"
+requires_python = "==3.12.6"
 
 [[package]]
 name = "aiofiles"
@@ -119,18 +119,18 @@ files = [
 
 [[package]]
 name = "fastapi"
-version = "0.115.2"
+version = "0.115.3"
 requires_python = ">=3.8"
 summary = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 groups = ["default"]
 dependencies = [
     "pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4",
-    "starlette<0.41.0,>=0.37.2",
+    "starlette<0.42.0,>=0.40.0",
     "typing-extensions>=4.8.0",
 ]
 files = [
-    {file = "fastapi-0.115.2-py3-none-any.whl", hash = "sha256:61704c71286579cc5a598763905928f24ee98bfcc07aabe84cfefb98812bbc86"},
-    {file = "fastapi-0.115.2.tar.gz", hash = "sha256:3995739e0b09fa12f984bce8fa9ae197b35d433750d3d312422d846e283697ee"},
+    {file = "fastapi-0.115.3-py3-none-any.whl", hash = "sha256:8035e8f9a2b0aa89cea03b6c77721178ed5358e1aea4cd8570d9466895c0638c"},
+    {file = "fastapi-0.115.3.tar.gz", hash = "sha256:c091c6a35599c036d676fa24bd4a6e19fa30058d93d950216cdc672881f6f7db"},
 ]
 
 [[package]]
@@ -400,22 +400,22 @@ files = [
 
 [[package]]
 name = "orjson"
-version = "3.10.9"
+version = "3.10.10"
 requires_python = ">=3.8"
 summary = "Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy"
 groups = ["default"]
 files = [
-    {file = "orjson-3.10.9-cp312-cp312-macosx_10_15_x86_64.macosx_11_0_arm64.macosx_10_15_universal2.whl", hash = "sha256:43ad5560db54331c007dc38be5ba7706cb72974a29ae8227019d89305d750a6f"},
-    {file = "orjson-3.10.9-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:1471c3274b1a4a9b8f4b9ed6effaea9ad885796373797515c44b365b375c256d"},
-    {file = "orjson-3.10.9-cp312-cp312-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:41d8cac575acd15918903d74cfaabb5dbe57b357b93341332f647d1013928dcc"},
-    {file = "orjson-3.10.9-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:2920c8754f1aedc98bd357ec172af18ce48f5f1017a92244c85fe41d16d3c6e0"},
-    {file = "orjson-3.10.9-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:c7fa3ff6a0d9d15a0d0d2254cca16cd919156a18423654ce5574591392fe9914"},
-    {file = "orjson-3.10.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e1e91b90c0c26bd79593967c1adef421bcff88c9e723d49c93bb7ad8af80bc6b"},
-    {file = "orjson-3.10.9-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:f11949024f785ace1a516db32fa6255f6227226b2c988abf66f5aee61d43d8f7"},
-    {file = "orjson-3.10.9-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:060e020d85d0ec145bc1b536b1fd9c10a0519c91991ead9724d6f759ebe26b9a"},
-    {file = "orjson-3.10.9-cp312-none-win32.whl", hash = "sha256:71f73439999fe662843da3607cdf6e75b1551c330f487e5801d463d969091c63"},
-    {file = "orjson-3.10.9-cp312-none-win_amd64.whl", hash = "sha256:12e2efe81356b8448f1cd130f8d75d3718de583112d71f2e2f8baa81bd835bb9"},
-    {file = "orjson-3.10.9.tar.gz", hash = "sha256:c378074e0c46035dc66e57006993233ec66bf8487d501bab41649b4b7289ed4d"},
+    {file = "orjson-3.10.10-cp312-cp312-macosx_10_15_x86_64.macosx_11_0_arm64.macosx_10_15_universal2.whl", hash = "sha256:8564f48f3620861f5ef1e080ce7cd122ee89d7d6dacf25fcae675ff63b4d6e05"},
+    {file = "orjson-3.10.10-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c5bf161a32b479034098c5b81f2608f09167ad2fa1c06abd4e527ea6bf4837a9"},
+    {file = "orjson-3.10.10-cp312-cp312-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:68b65c93617bcafa7f04b74ae8bc2cc214bd5cb45168a953256ff83015c6747d"},
+    {file = "orjson-3.10.10-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:e8e28406f97fc2ea0c6150f4c1b6e8261453318930b334abc419214c82314f85"},
+    {file = "orjson-3.10.10-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:e4d0d9fe174cc7a5bdce2e6c378bcdb4c49b2bf522a8f996aa586020e1b96cee"},
+    {file = "orjson-3.10.10-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b3be81c42f1242cbed03cbb3973501fcaa2675a0af638f8be494eaf37143d999"},
+    {file = "orjson-3.10.10-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:65f9886d3bae65be026219c0a5f32dbbe91a9e6272f56d092ab22561ad0ea33b"},
+    {file = "orjson-3.10.10-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:730ed5350147db7beb23ddaf072f490329e90a1d059711d364b49fe352ec987b"},
+    {file = "orjson-3.10.10-cp312-none-win32.whl", hash = "sha256:a8f4bf5f1c85bea2170800020d53a8877812892697f9c2de73d576c9307a8a5f"},
+    {file = "orjson-3.10.10-cp312-none-win_amd64.whl", hash = "sha256:384cd13579a1b4cd689d218e329f459eb9ddc504fa48c5a83ef4889db7fd7a4f"},
+    {file = "orjson-3.10.10.tar.gz", hash = "sha256:37949383c4df7b4337ce82ee35b6d7471e55195efa7dcb45ab8226ceadb0fe3b"},
 ]
 
 [[package]]
@@ -612,7 +612,7 @@ files = [
 
 [[package]]
 name = "rich"
-version = "13.9.2"
+version = "13.9.3"
 requires_python = ">=3.8.0"
 summary = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 groups = ["default"]
@@ -623,8 +623,8 @@ dependencies = [
     "typing-extensions<5.0,>=4.0.0; python_version < \"3.11\"",
 ]
 files = [
-    {file = "rich-13.9.2-py3-none-any.whl", hash = "sha256:8c82a3d3f8dcfe9e734771313e606b39d8247bb6b826e196f4914b333b743cf1"},
-    {file = "rich-13.9.2.tar.gz", hash = "sha256:51a2c62057461aaf7152b4d611168f93a9fc73068f8ded2790f29fe2b5366d0c"},
+    {file = "rich-13.9.3-py3-none-any.whl", hash = "sha256:9836f5096eb2172c9e77df411c1b009bace4193d6a481d534fea75ebba758283"},
+    {file = "rich-13.9.3.tar.gz", hash = "sha256:bc1e01b899537598cf02579d2b9f4a415104d3fc439313a7a2c165d76557a08e"},
 ]
 
 [[package]]
@@ -702,7 +702,7 @@ files = [
 
 [[package]]
 name = "starlette"
-version = "0.40.0"
+version = "0.41.0"
 requires_python = ">=3.8"
 summary = "The little ASGI library that shines."
 groups = ["default"]
@@ -711,8 +711,8 @@ dependencies = [
     "typing-extensions>=3.10.0; python_version < \"3.10\"",
 ]
 files = [
-    {file = "starlette-0.40.0-py3-none-any.whl", hash = "sha256:c494a22fae73805376ea6bf88439783ecfba9aac88a43911b48c653437e784c4"},
-    {file = "starlette-0.40.0.tar.gz", hash = "sha256:1a3139688fb298ce5e2d661d37046a66ad996ce94be4d4983be019a23a04ea35"},
+    {file = "starlette-0.41.0-py3-none-any.whl", hash = "sha256:a0193a3c413ebc9c78bff1c3546a45bb8c8bcb4a84cae8747d650a65bd37210a"},
+    {file = "starlette-0.41.0.tar.gz", hash = "sha256:39cbd8768b107d68bfe1ff1672b38a2c38b49777de46d2a592841d58e3bf7c2a"},
 ]
 
 [[package]]
