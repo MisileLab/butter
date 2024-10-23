@@ -12,9 +12,8 @@
     import { queryId, getItem, nullVerify } from "@misile/satellite"
     import { nullValue } from "@misile/satellite/errors"
     const BASE_API_URL="https://butter.misile.xyz"
-    const BASE_RVC_API_URL="https://rvc.misile.xyz"
-    var isrvc = false
-    console.log(BASE_API_URL, BASE_RVC_API_URL)
+    var tts_working = false
+    console.log(BASE_API_URL)
     var name: string;
     try {
       name = getItem("name")
@@ -49,19 +48,19 @@
             }).then((res)=>{
               res.text().then((txt)=>{
                 console.log(txt)
-                if (!isrvc) {
-                  console.log('try rvc')
-                  isrvc = true;
+                if (!tts_working) {
+                  console.log('try tts')
+                  tts_working = true;
                   fd = new FormData()
                   fd.append('content', JSON.parse(txt))
-                  fetch(`${BASE_RVC_API_URL}/rvc`, {
+                  fetch(`${BASE_API_URL}/tts`, {
                     method: 'POST',
                     body: fd
                   }).then((res)=>{
                     res.text().then((txt)=>{
                       (queryId("audio_resp") as HTMLAudioElement).src = `data:audio/wav;base64,${txt.replace(/"/g, '')}`;
                       (queryId("audio_resp") as HTMLAudioElement).play()
-                      isrvc = false
+                      tts_working = false
                     })
                   })
                 }

@@ -1,9 +1,0 @@
-tomli
-loguru
-google-cloud-texttospeech
-python-multipart
-fastapi[standard]
-websockets
-pyworld@https://github.com/MisileLab/pyworld-butter/releases/download/0.3.4/pyworld-0.3.4-cp312-cp312-linux_x86_64.whl
-fairseq@https://github.com/MisileLab/fairseq-butter/releases/download/v0.12.3.1/fairseq-0.12.3.1-cp312-cp312-linux_x86_64.whl
-rvc_python_butter@https://github.com/MisileLab/rvc-python-butter/releases/download/0.2.0/rvc_python_butter-0.1.0-py3-none-any.whl

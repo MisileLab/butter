@@ -128,7 +128,7 @@ async def search_internet(query: str, question: str) -> str:
   return f
 
 @print_it
-async def lens(question: str, image: str) -> str:
+async def lens(question: str, image: str, gl: str, hl: str) -> str:
   if not image.startswith("https"):
     if not Path(image).exists():
       return "image not found"
@@ -168,6 +168,8 @@ class lensBase(BaseModel):
   question: str = Field(description="question that gives to search engine")
   # you know it, it's duct tape
   image: str = Field(description="url or local file of image (if image is external must starts with https, if image is attachment must be starts with /tmp/gradio)")
+  gl: str = Field(description="region of country", default="us")
+  hl: str = Field(description="language of country", default="en")
 
 functions = {
   "sendRequestBase": sendRequestBase,

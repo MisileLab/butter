@@ -1,8 +1,9 @@
 from modules.llm_function import middle_prompt, llm_mini
-from modules.llm import api_key, llm, functions, middle_converting_functions, llm_vtube
-from modules.vtube import VTubeModel
+from modules.llm import api_key, llm, functions, middle_converting_functions
+# from modules.llm import llm_vtube
+# from modules.vtube import VTubeModel
 from modules.memory import m
-from modules.config import wss
+from modules.config import wss, config
 from modules.lib import is_binary_string
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
 
@@ -11,6 +12,8 @@ from openai import OpenAI
 from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
 from fastapi.responses import PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
+from elevenlabs import Voice, VoiceSettings
+from elevenlabs.client import ElevenLabs
 
 from pathlib import Path
 from base64 import b64encode, b64decode
@@ -21,6 +24,8 @@ from typing import Any
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
 
+elc = ElevenLabs(api_key=config["ai"]["tts"])
+
 async def broadcast(event_type: str, data: Any):
   for ws in wss:
     await ws.send_json({"type": event_type, "data": data})
@@ -29,13 +34,28 @@ prompt = Path("./prompts/prompt").read_text()
 summarize_prompt = Path("./prompts/summarize_prompt").read_text()
 messages: list[SystemMessage | AIMessage | ToolMessage | HumanMessage] = [SystemMessage(prompt)]
 whisper = OpenAI(api_key=api_key)
-current_points = None
+# current_points = None
+
+@app.post("/tts")
+async def tts(content: str = Form()):
+  await broadcast("tts", "start")
+  await broadcast("tts", "end")
+  logger.debug("end tts")
+  audio = elc.generate(
+    text=content,
+    voice=Voice(
+      voice_id=config["ai"]["elevenlabs_id"],
+      settings=VoiceSettings(stability=0.5, similarity_boost=0.3, style=0, use_speaker_boost=True)
+    ),
+    model="eleven_turbo_2.5"
+  )
+  return b''.join(audio)
 
 @app.post("/chat/send")
 async def send_message(
   name: str | None = Form(None),
   content: str | None = Form(None),
-  files: list[UploadFile] = File(default=[])
+  files: list[UploadFile] | None = File(default=[])
 ):  # sourcery skip: low-code-quality
   logger.debug(messages[0])
   logger.debug(messages[-1])
@@ -122,20 +142,20 @@ async def send_message(
     messages.extend(
       [SystemMessage(prompt), HumanMessage(summarized), AIMessage("알았어!")] + deepcopy(tmp_messages)
     )
-  global current_points
   con = msg.content
-  _con = await llm_vtube.ainvoke([
-    SystemMessage(prompt + f"\nthis is your character, move model based on input and character.\nthe speaker is infront of you.\n{f'current model parameter is {current_points.model_dump()}' if current_points is not None else ''}"),
-    HumanMessage(f"question: {content}, answer: {con}")
-  ])
-  logger.debug(_con)
-  if not isinstance(_con, VTubeModel):
-    raise HTTPException(
-      status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-      detail="VTubeModel is not returned"
-    )
-  await broadcast("model", _con.model_dump())
-  current_points = _con
+  # global current_points
+  # _con = await llm_vtube.ainvoke([
+  #   SystemMessage(prompt + f"\nthis is your character, move model based on input and character.\nthe speaker is infront of you.\n{f'current model parameter is {current_points.model_dump()}' if current_points is not None else ''}"),
+  #   HumanMessage(f"question: {content}, answer: {con}")
+  # ])
+  # logger.debug(_con)
+  # if not isinstance(_con, VTubeModel):
+  #   raise HTTPException(
+  #     status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+  #     detail="VTubeModel is not returned"
+  #   )
+  # await broadcast("model", _con.model_dump())
+  # current_points = _con
   return PlainTextResponse(con)
 
 @app.post("/chat/reset")
