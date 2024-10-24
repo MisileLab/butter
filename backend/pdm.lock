@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:3011ba31b1032aeb2f1525581e5093b287611073f13ce3a7a159a2f6a718fc6a"
+content_hash = "sha256:a20dd84e2bcca991ecc2dbfe2814a1312a5cb3b30721a56da875527568eab384"
 
 [[metadata.targets]]
 requires_python = "==3.12.6"
@@ -762,7 +762,7 @@ files = [
 
 [[package]]
 name = "minio"
-version = "7.2.9"
+version = "7.2.10"
 requires_python = ">3.8"
 summary = "MinIO Python SDK for Amazon S3 Compatible Cloud Storage"
 groups = ["default"]
@@ -774,8 +774,8 @@ dependencies = [
     "urllib3",
 ]
 files = [
-    {file = "minio-7.2.9-py3-none-any.whl", hash = "sha256:fe5523d9c4a4d6cfc07e96905852841bccdb22b22770e1efca4bf5ae8b65774b"},
-    {file = "minio-7.2.9.tar.gz", hash = "sha256:a83c2fcd981944602a8dc11e8e07543ed9cda0a9462264e3f46a13171c56bccb"},
+    {file = "minio-7.2.10-py3-none-any.whl", hash = "sha256:5961c58192b1d70d3a2a362064b8e027b8232688998a6d1251dadbb02ab57a7d"},
+    {file = "minio-7.2.10.tar.gz", hash = "sha256:418c31ac79346a580df04a0e14db1becbc548a6e7cca61f9bc4ef3bcd336c449"},
 ]
 
 [[package]]
