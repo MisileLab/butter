@@ -10,7 +10,7 @@ dependencies = [
   "tomli==2.0.2",
   "loguru==0.7.2",
   "orjson==3.10.10",
-  "openai==1.52.1",
+  "openai==1.52.2",
   "selenium==4.25.0",
   "lxml==5.3.0",
   "beautifulsoup4==4.12.3",
