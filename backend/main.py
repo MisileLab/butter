@@ -24,7 +24,7 @@ from typing import Any
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
 
-elc = ElevenLabs(api_key=config["ai"]["tts"])
+elc = ElevenLabs(api_key=config["ai"]["elevenlabs"]["api_key"])
 
 async def broadcast(event_type: str, data: Any):
   for ws in wss:
@@ -44,7 +44,7 @@ async def tts(content: str = Form()):
   audio = elc.generate(
     text=content,
     voice=Voice(
-      voice_id=config["ai"]["elevenlabs_id"],
+      voice_id=config["ai"]["elevenlabs"]["id"],
       settings=VoiceSettings(stability=0.5, similarity_boost=0.3, style=0, use_speaker_boost=True)
     ),
     model="eleven_turbo_2.5"
