@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:a20dd84e2bcca991ecc2dbfe2814a1312a5cb3b30721a56da875527568eab384"
+content_hash = "sha256:a18b14c526d0f1502e619b4e7ad85d1a5a69c417904e1d668e43fcb51b2e27a4"
 
 [[metadata.targets]]
 requires_python = "==3.12.6"
@@ -245,7 +245,7 @@ files = [
 
 [[package]]
 name = "elevenlabs"
-version = "1.10.0"
+version = "1.11.0"
 requires_python = "<4.0,>=3.8"
 summary = ""
 groups = ["default"]
@@ -258,8 +258,8 @@ dependencies = [
     "websockets>=11.0",
 ]
 files = [
-    {file = "elevenlabs-1.10.0-py3-none-any.whl", hash = "sha256:0ccec0f089a29432ce746183940dbe127c40775d354af7c56226418212ab5c67"},
-    {file = "elevenlabs-1.10.0.tar.gz", hash = "sha256:03d82cfb214b2230540cde57bba6fc8bbf62373515912d9b1e7eb869880acca8"},
+    {file = "elevenlabs-1.11.0-py3-none-any.whl", hash = "sha256:960fd40aa27a12fac300000d8a5c2ff5e54ef71eb63969b216fd12bb18d365d7"},
+    {file = "elevenlabs-1.11.0.tar.gz", hash = "sha256:0028f8bc9218adad74b40b5610159f5004e87bc7b268af9c0a361c66a34f4d63"},
 ]
 
 [[package]]
