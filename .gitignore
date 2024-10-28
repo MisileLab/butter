@@ -1,5 +1,6 @@
 config.toml
 .direnv
+.python-version
 
 # Python.gitignore by ignofierplus
 __pycache__/

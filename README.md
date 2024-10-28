@@ -4,8 +4,8 @@ Smoothly running, with multi-modal now.
 
 ## Requirements
 
-- Python 3.12
-- Pdm
+- python 3.12
+- uv
 
 ## About voice model
 

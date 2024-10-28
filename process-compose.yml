@@ -4,10 +4,10 @@ log_level: debug
 
 processes:
   Server:
-    command: "cd ./backend && direnv exec . pdm run fastapi run main.py --port 10002"
+    command: "cd ./backend && direnv exec . uv run fastapi run main.py --port 10002"
 
   Client:
-    command: "cd ./frontend && direnv exec . pdm run python main.py"
+    command: "cd ./frontend && direnv exec . uv run python main.py"
     depends_on:
       Server:
         condition: process_started

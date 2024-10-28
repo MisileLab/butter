@@ -1,21 +1,13 @@
 [project]
-name = "butter"
+name = "model"
 version = "0.1.0"
-description = "Butter"
-authors = [
-  {name = "MisileLab", email = "misile@duck.com"},
-]
+description = "model of butter"
+requires-python = "==3.13.0"
 dependencies = [
-  "pyvts==0.3.3",
   "httpx==0.27.2",
   "httpx-ws==0.6.2",
   "loguru==0.7.2",
   "numpy==2.1.2",
-  "pydantic==2.9.2"
+  "pydantic==2.9.2",
+  "pyvts==0.3.3"
 ]
-requires-python = "==3.13.0"
-readme = "README.md"
-license = {text = "MisileLab License"}
-
-[tool.pdm]
-distribution = false

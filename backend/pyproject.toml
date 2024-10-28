@@ -1,32 +1,22 @@
 [project]
-name = "butter-API"
+name = "backend"
 version = "0.1.0"
-description = "An AI assistant"
-authors = [
-  {name = "MisileLaboratory", email = "misileminecord@gmail.com"},
-  {name = "Landy"}
-]
-dependencies = [
-  "tomli==2.0.2",
-  "loguru==0.7.2",
-  "orjson==3.10.10",
-  "openai==1.52.2",
-  "selenium==4.25.0",
-  "lxml==5.3.0",
-  "beautifulsoup4==4.12.3",
-  "mem0ai==0.1.24",
-  "python-multipart==0.0.16",
-  "fastapi[standard]==0.115.4",
-  "websockets==13.1",
-  "langchain-openai==0.2.3",
-  "duckduckgo-search==6.3.2",
-  "minio==7.2.10",
-  "elevenlabs==1.11.0"
-]
+description = "Backend of butter"
 requires-python = "==3.13.0"
-readme = "README.md"
-license = {text = "MisileLab License"}
-
-[tool.pdm]
-distribution = false
-
+dependencies = [
+  "beautifulsoup4==4.12.3",
+  "duckduckgo-search==6.3.2",
+  "elevenlabs==1.11.0",
+  "fastapi[standard]==0.115.4",
+  "langchain-openai==0.2.3",
+  "loguru==0.7.2",
+  "lxml==5.3.0",
+  "mem0ai==0.1.24",
+  "minio==7.2.10",
+  "openai==1.52.2",
+  "orjson==3.10.10",
+  "python-multipart==0.0.16",
+  "selenium==4.25.0",
+  "tomli==2.0.2",
+  "websockets==13.1"
+]

@@ -1,19 +1,10 @@
 [project]
-name = "butter_frontend"
+name = "frontend"
 version = "0.1.0"
 description = "Frontend of butter"
-authors = [
-  {name = "misilelab", email = "misileminecord@gmail.com"},
-]
+requires-python = "==3.13.0"
 dependencies = [
   "gradio==5.4.0",
-  "loguru==0.7.2",
   "httpx==0.27.2",
+  "loguru==0.7.2"
 ]
-
-requires-python = "==3.13.0"
-readme = "README.md"
-license = {text = "MisileLab License"}
-
-[tool.pdm]
-distribution = false
