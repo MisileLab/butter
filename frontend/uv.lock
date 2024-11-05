@@ -170,7 +170,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "gradio", specifier = "==5.4.0" },
+    { name = "gradio", specifier = "==5.5.0" },
     { name = "httpx", specifier = "==0.27.2" },
     { name = "loguru", specifier = "==0.7.2" },
 ]
@@ -186,7 +186,7 @@ wheels = [
 
 [[package]]
 name = "gradio"
-version = "5.4.0"
+version = "5.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiofiles" },
@@ -219,7 +219,7 @@ dependencies = [
     { name = "uvicorn", marker = "sys_platform != 'emscripten'" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a5/ba/18ad189474e730baa47697c55afd4ab7c0d19d429232f7b8f771f3fd76d5/gradio-5.4.0-py3-none-any.whl", hash = "sha256:e229e2a35f58010b208efabb56af5f4385813cf3f2845f7f0bc39819ff952fab", size = 56689698 },
+    { url = "https://files.pythonhosted.org/packages/18/a1/1bdb57a072903b222b1a745aa634cb845ff5f52a88ddd5ed1640ecf30beb/gradio-5.5.0-py3-none-any.whl", hash = "sha256:48ea11ae1376d9506eb295dbeb4d3ff962830a6e2d8aa9085e025cce3c04e544", size = 56712982 },
 ]
 
 [[package]]
