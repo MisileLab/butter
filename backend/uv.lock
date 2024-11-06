@@ -93,7 +93,7 @@ requires-dist = [
     { name = "duckduckgo-search", specifier = "==6.3.3" },
     { name = "elevenlabs", specifier = "==1.12.1" },
     { name = "fastapi", extras = ["standard"], specifier = "==0.115.4" },
-    { name = "langchain-openai", specifier = "==0.2.5" },
+    { name = "langchain-openai", specifier = "==0.2.6" },
     { name = "loguru", specifier = "==0.7.2" },
     { name = "lxml", specifier = "==5.3.0" },
     { name = "mem0ai", specifier = "==0.1.27" },
@@ -516,16 +516,16 @@ wheels = [
 
 [[package]]
 name = "langchain-openai"
-version = "0.2.5"
+version = "0.2.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "langchain-core" },
     { name = "openai" },
     { name = "tiktoken" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b3/7a/2cf68955181b9571d7768dfc4229f54f21977206fe6d7a0eb39fc48be649/langchain_openai-0.2.5.tar.gz", hash = "sha256:55b98711a880474ec363267bf6cd0e2727dc00e8433731318d063a2184582c28", size = 43165 }
+sdist = { url = "https://files.pythonhosted.org/packages/93/67/91e89373c8d6c670bd092d04078086b8e15028caae11708a162f80ae5201/langchain_openai-0.2.6.tar.gz", hash = "sha256:7054e5f64498ad8e59d77cdc210103f5ea4f67258997edc48ae237298adeb316", size = 43166 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/85/74/f0c5d1b00f9c63246c8106b795ea792bb7ac61e92db9101716f05cfc42c7/langchain_openai-0.2.5-py3-none-any.whl", hash = "sha256:745fd9d51a5a3a9cb8839d41f3786ab38dfc539e47c713a806cbca32f3d0875c", size = 50368 },
+    { url = "https://files.pythonhosted.org/packages/a2/71/789e9a66d3af707928b1bb42a67b1e93798c80a4b6a064bad32803cd1b79/langchain_openai-0.2.6-py3-none-any.whl", hash = "sha256:d56e4d9183bdd1a5fb5f3ed9d287f15108e01d631ded170dd330a566f2927b95", size = 50366 },
 ]
 
 [[package]]
