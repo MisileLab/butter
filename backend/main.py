@@ -12,6 +12,7 @@ from openai import OpenAI
 from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebSocket, WebSocketDisconnect
 from fastapi.responses import PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from elevenlabs import Voice, VoiceSettings
 from elevenlabs.client import ElevenLabs
 
@@ -20,6 +21,7 @@ from base64 import b64encode, b64decode
 from copy import deepcopy
 from inspect import iscoroutinefunction
 from typing import Any
+from tempfile import TemporaryFile
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
@@ -37,7 +39,7 @@ whisper = OpenAI(api_key=api_key)
 # current_points = None
 
 @app.post("/tts")
-async def tts(content: str = Form()) -> bytes:
+async def tts(content: str = Form()) -> FileResponse:
   await broadcast("tts", "start")
   audio = elc.generate(
     text=content,
@@ -49,7 +51,9 @@ async def tts(content: str = Form()) -> bytes:
   )
   await broadcast("tts", "end")
   logger.debug("end tts")
-  return b''.join(audio)
+  with TemporaryFile(suffix=".mp3") as f:
+    f.write(b''.join(audio))
+    return FileResponse(f.name)
 
 @app.post("/chat/send")
 async def send_message(
