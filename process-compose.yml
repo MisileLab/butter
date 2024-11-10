@@ -9,9 +9,12 @@ processes:
   frontend:
     command: "cd ./frontend && direnv exec . uv run python main.py"
     depends_on:
-      Server:
+      server:
         condition: process_started
 
   client:
     command: "cd ./client && direnv exec . pnpm run preview"
+    depends_on:
+      server:
+        condition: process_started
 
