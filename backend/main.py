@@ -47,7 +47,7 @@ async def tts(content: str = Form()):
       voice_id=config["ai"]["elevenlabs"]["id"],
       settings=VoiceSettings(stability=0.5, similarity_boost=0.3, style=0, use_speaker_boost=True)
     ),
-    model="eleven_turbo_2.5"
+    model="eleven_multilingual_v2"
   )
   return b''.join(audio)
 
