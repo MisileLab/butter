@@ -52,6 +52,7 @@ async def tts(content: str = Form()) -> FileResponse:
   await broadcast("tts", "end")
   logger.debug("end tts")
   with TemporaryFile(suffix=".mp3") as f:
+    logger.debug(f.name)
     f.write(b''.join(audio))
     return FileResponse(f.name)
 
