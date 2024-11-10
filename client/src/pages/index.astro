@@ -58,7 +58,8 @@
                     body: fd
                   }).then((res)=>{
                     res.text().then((txt)=>{
-                      (queryId("audio_resp") as HTMLAudioElement).src = `data:audio/wav;base64,${txt.replace(/"/g, '')}`;
+                      const c = atob(txt);
+                      (queryId("audio_resp") as HTMLAudioElement).src = `data:audio/wav;base64,${c.replace(/"/g, '')}`;
                       (queryId("audio_resp") as HTMLAudioElement).play()
                       tts_working = false
                     })
