@@ -18,6 +18,9 @@ export default defineConfig({
           {
             src: 'node_modules/onnxruntime-web/dist/*.wasm',
             dest: './_astro/'
+          }, {
+            src: 'node_modules/onnxruntime-web/dist/ort-wasm*.mjs',
+            dest: './_astro/'
           }
         ]
       })
