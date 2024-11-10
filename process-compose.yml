@@ -13,7 +13,7 @@ processes:
         condition: process_started
 
   client:
-    command: "cd ./client && direnv exec . pnpm run preview"
+    command: "cd ./client && direnv exec . pnpm run preview --host 0.0.0.0 --port 10000"
     depends_on:
       server:
         condition: process_started
