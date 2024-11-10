@@ -13,6 +13,7 @@ from fastapi import FastAPI, HTTPException, status, UploadFile, File, Form, WebS
 from fastapi.responses import PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from starlette.background import BackgroundTask
 from elevenlabs import Voice, VoiceSettings
 from elevenlabs.client import ElevenLabs
 
@@ -21,7 +22,7 @@ from base64 import b64encode, b64decode
 from copy import deepcopy
 from inspect import iscoroutinefunction
 from typing import Any
-from tempfile import TemporaryFile
+from tempfile import mkstemp
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
@@ -51,10 +52,11 @@ async def tts(content: str = Form()) -> FileResponse:
   )
   await broadcast("tts", "end")
   logger.debug("end tts")
-  with TemporaryFile(suffix=".mp3") as f:
-    logger.debug(f.name)
-    f.write(b''.join(audio))
-    return FileResponse(f.name)
+  p = Path(mkstemp(suffix=".mp3")[1])
+  f = open(p, 'wb')
+  logger.debug(f.name)
+  f.write(b''.join(audio))
+  return FileResponse(p, filename="tts.mp3", background=BackgroundTask(lambda: p.unlink()))
 
 @app.post("/chat/send")
 async def send_message(
