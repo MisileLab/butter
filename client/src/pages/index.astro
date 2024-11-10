@@ -52,7 +52,7 @@
                   console.log('try tts')
                   tts_working = true;
                   fd = new FormData()
-                  fd.append('content', JSON.parse(txt))
+                  fd.append('content', txt)
                   fetch(`${BASE_API_URL}/tts`, {
                     method: 'POST',
                     body: fd

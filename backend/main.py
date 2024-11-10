@@ -37,10 +37,8 @@ whisper = OpenAI(api_key=api_key)
 # current_points = None
 
 @app.post("/tts")
-async def tts(content: str = Form()):
+async def tts(content: str = Form()) -> bytes:
   await broadcast("tts", "start")
-  await broadcast("tts", "end")
-  logger.debug("end tts")
   audio = elc.generate(
     text=content,
     voice=Voice(
@@ -49,6 +47,8 @@ async def tts(content: str = Form()):
     ),
     model="eleven_multilingual_v2"
   )
+  await broadcast("tts", "end")
+  logger.debug("end tts")
   return b''.join(audio)
 
 @app.post("/chat/send")
