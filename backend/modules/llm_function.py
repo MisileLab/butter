@@ -137,7 +137,9 @@ async def lens(question: str, image: str, gl: str, hl: str) -> str:
     "engine": "google_reverse_image",
     "q": question,
     "image_url": f"https://{config["minio"]["url"]}/butter/{quote(Path(image).name)}",
-    "api_key": serpapi_key
+    "api_key": serpapi_key,
+    "gl": gl,
+    "hl": hl
   }
 
   search = get("https://serpapi.com/search", params=params, timeout=10.0)
@@ -168,8 +170,8 @@ class lensBase(BaseModel):
   question: str = Field(description="question that gives to search engine")
   # you know it, it's duct tape
   image: str = Field(description="url or local file of image (if image is external must starts with https, if image is attachment must be starts with /tmp/gradio)")
-  gl: str = Field(description="region of country", default="us")
-  hl: str = Field(description="language of country", default="en")
+  gl: str = Field(description="region of country", default="ko")
+  hl: str = Field(description="language of country", default="kr")
 
 functions = {
   "sendRequestBase": sendRequestBase,
