@@ -12,7 +12,7 @@
   "dependencies": {
     "@misile/satellite": "0.0.5",
     "@ricky0123/vad-web": "0.0.19",
-    "astro": "4.16.13",
+    "astro": "4.16.14",
     "onnxruntime-web": "1.20.0"
   },
   "devDependencies": {
