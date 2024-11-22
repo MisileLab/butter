@@ -18,8 +18,8 @@ importers:
         specifier: 4.16.14
         version: 4.16.14(@types/node@22.7.4)(rollup@4.22.5)(typescript@5.7.2)
       onnxruntime-web:
-        specifier: 1.20.0
-        version: 1.20.0
+        specifier: 1.20.1
+        version: 1.20.1
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.4
@@ -1348,11 +1348,11 @@ packages:
   oniguruma-to-js@0.4.3:
     resolution: {integrity: sha512-X0jWUcAlxORhOqqBREgPMgnshB7ZGYszBNspP+tS9hPD3l13CdaXcHbgImoHUHlrvGx/7AvFEkTRhAGYh+jzjQ==}
 
-  onnxruntime-common@1.20.0:
-    resolution: {integrity: sha512-9ehS4ul5fBszIcHhfxuDgk45lO+Fqrxmrgwk1Pxb1JRvbQiCB/v9Royv95SRCWHktLMviqNjBsEd/biJhd39cg==}
+  onnxruntime-common@1.20.1:
+    resolution: {integrity: sha512-YiU0s0IzYYC+gWvqD1HzLc46Du1sXpSiwzKb63PACIJr6LfL27VsXSXQvt68EzD3V0D5Bc0vyJTjmMxp0ylQiw==}
 
-  onnxruntime-web@1.20.0:
-    resolution: {integrity: sha512-IoUf8dqHFJLV4DUSz+Ok+xxyN6cQk57gb20m6PZE5gag3QXuvegYMq9dG8t/QF4JjTKIwvfvnr16ouzCCB9IMA==}
+  onnxruntime-web@1.20.1:
+    resolution: {integrity: sha512-TePF6XVpLL1rWVMIl5Y9ACBQcyCNFThZON/jgElNd9Txb73CIEGlklhYR3UEr1cp5r0rbGI6nDwwrs79g7WjoA==}
 
   ora@8.1.1:
     resolution: {integrity: sha512-YWielGi1XzG1UTvOaCFaNgEnuhZVMSHYkW/FQ7UX8O26PtlpdM84c0f7wLPlkvx2RfiQmnzd61d/MGxmpQeJPw==}
@@ -2360,7 +2360,7 @@ snapshots:
 
   '@ricky0123/vad-web@0.0.19':
     dependencies:
-      onnxruntime-web: 1.20.0
+      onnxruntime-web: 1.20.1
 
   '@rollup/pluginutils@5.1.3(rollup@4.22.5)':
     dependencies:
@@ -3477,14 +3477,14 @@ snapshots:
     dependencies:
       regex: 4.3.2
 
-  onnxruntime-common@1.20.0: {}
+  onnxruntime-common@1.20.1: {}
 
-  onnxruntime-web@1.20.0:
+  onnxruntime-web@1.20.1:
     dependencies:
       flatbuffers: 1.12.0
       guid-typescript: 1.0.9
       long: 5.2.3
-      onnxruntime-common: 1.20.0
+      onnxruntime-common: 1.20.1
       platform: 1.3.6
       protobufjs: 7.4.0
 
