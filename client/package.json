@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "typescript": "5.6.3",
+    "typescript": "5.7.2",
     "vite-plugin-static-copy": "2.1.0"
   }
 }
