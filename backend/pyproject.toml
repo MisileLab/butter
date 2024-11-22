@@ -5,7 +5,7 @@ description = "Backend of butter"
 requires-python = "==3.13.0"
 dependencies = [
   "beautifulsoup4==4.12.3",
-  "duckduckgo-search==6.3.5",
+  "duckduckgo-search==6.3.6",
   "elevenlabs==1.13.0",
   "fastapi[standard]==0.115.5",
   "langchain-openai==0.2.9",
