@@ -16,7 +16,7 @@ dependencies = [
   "openai==1.55.1",
   "orjson==3.10.12",
   "python-multipart==0.0.17",
-  "selenium==4.27.0",
+  "selenium==4.27.1",
   "tomli==2.1.0",
   "websockets==14.1"
 ]
