@@ -97,7 +97,7 @@ requires-dist = [
     { name = "loguru", specifier = "==0.7.2" },
     { name = "lxml", specifier = "==5.3.0" },
     { name = "mem0ai", specifier = "==0.1.32" },
-    { name = "minio", specifier = "==7.2.11" },
+    { name = "minio", specifier = "==7.2.12" },
     { name = "openai", specifier = "==1.55.1" },
     { name = "orjson", specifier = "==3.10.12" },
     { name = "python-multipart", specifier = "==0.0.17" },
@@ -650,7 +650,7 @@ wheels = [
 
 [[package]]
 name = "minio"
-version = "7.2.11"
+version = "7.2.12"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -659,9 +659,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c5/24/a651d9fab44e73a42ed3a413737ea3c6c291cc66ba07a59383c085177590/minio-7.2.11.tar.gz", hash = "sha256:4db95a21fe1e2022ec975292d8a1f83bd5b18f830d23d42a4518ac7a5281d7c5", size = 136354 }
+sdist = { url = "https://files.pythonhosted.org/packages/71/a4/3b98ffb91d2ccb9d1e049e7b91b05109592cd7a0fce4383459e74ce1240a/minio-7.2.12.tar.gz", hash = "sha256:2a3fcf4ab753824de8ae3ffeb14da33d6ad416f83a7e82363a27b34da8e91f27", size = 136451 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b6/9e/8d9f6b9746f8ede78b0a4e4b8908e4d80bd609fca0b3e3195a07dda29534/minio-7.2.11-py3-none-any.whl", hash = "sha256:153582ed52ff3b5005ba558e1f25bfe1e9e834f7f0745e594777f28e3e81e1a0", size = 94313 },
+    { url = "https://files.pythonhosted.org/packages/1b/36/bd87f410d74138b7fa8d177eb09ac3aa73c94ed46eb9c990212b846304cb/minio-7.2.12-py3-none-any.whl", hash = "sha256:4b63370ca83f82c23e6fb0a094a1e2b08b275884ae43f6a90c4388a45633e3f5", size = 94346 },
 ]
 
 [[package]]
