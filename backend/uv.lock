@@ -96,7 +96,7 @@ requires-dist = [
     { name = "langchain-openai", specifier = "==0.2.10" },
     { name = "loguru", specifier = "==0.7.2" },
     { name = "lxml", specifier = "==5.3.0" },
-    { name = "mem0ai", specifier = "==0.1.33" },
+    { name = "mem0ai", specifier = "==0.1.34" },
     { name = "minio", specifier = "==7.2.12" },
     { name = "openai", specifier = "==1.55.2" },
     { name = "orjson", specifier = "==3.10.12" },
@@ -633,7 +633,7 @@ wheels = [
 
 [[package]]
 name = "mem0ai"
-version = "0.1.33"
+version = "0.1.34"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "openai" },
@@ -643,9 +643,9 @@ dependencies = [
     { name = "qdrant-client" },
     { name = "sqlalchemy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8e/77/7e7f891edf2857af3aae33d63f9c969975648237d9d38b96ace03b2595fd/mem0ai-0.1.33.tar.gz", hash = "sha256:afd5940e5a8590303e89aa6af94d5e4f91929169da03080247fb97eeddb04efd", size = 57629 }
+sdist = { url = "https://files.pythonhosted.org/packages/db/6d/e84e807a89abe3b0acfb02500488e5ca2742397f9b9ab61d2b54007fe384/mem0ai-0.1.34.tar.gz", hash = "sha256:1d99afe3509f659c025c220c533cb033f93c98ae9ae8c11eb057ee07a73c8d9d", size = 57737 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4b/ff/4f0aa12d022714fb72f2e1c377fadc5832289cb747c9df8de9e127e1f575/mem0ai-0.1.33-py3-none-any.whl", hash = "sha256:4997aac244f604fa0f7189e4e2b6d51d7bdec4501ca1c64749f5f8b517aff713", size = 83094 },
+    { url = "https://files.pythonhosted.org/packages/93/d5/c864ff1a2f015f084053de4c8595e7938dadde17f4c139ee0aee81cff4dc/mem0ai-0.1.34-py3-none-any.whl", hash = "sha256:10ad47e4773e05c3ed51004edf8a6797e72cbbf97658f368be141432c548287c", size = 83191 },
 ]
 
 [[package]]
