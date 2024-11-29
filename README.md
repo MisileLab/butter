@@ -14,5 +14,5 @@ We're using elevenlab's instant voice cloning model based on Kal'tsit(JP) and ad
 
 ## for legacy
 
-if `dvc pull` failed, use cache that in [minio](https://minio.misile.xyz/noa/dvc.tar.xz)
+if `dvc pull` failed, use cache that in [minio](https://minio.misile.xyz/noa/dvc.tar.zst)
 
