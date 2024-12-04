@@ -12,15 +12,20 @@ export default defineConfig({
             dest: './'
           },
           {
-            src: 'node_modules/@ricky0123/vad-web/dist/silero_vad.onnx',
+            src: 'node_modules/@ricky0123/vad-web/dist/silero_vad_v5.onnx',
+            dest: './'
+          },
+          {
+            src: 'node_modules/@ricky0123/vad-web/dist/silero_vad_legacy.onnx',
             dest: './'
           },
           {
             src: 'node_modules/onnxruntime-web/dist/*.wasm',
             dest: './_astro/'
-          }, {
-            src: 'node_modules/onnxruntime-web/dist/ort-wasm*.mjs',
-            dest: './_astro/'
+          },
+          {
+            src: 'node_modules/onnxruntime-web/dist/*.wasm',
+            dest: './'
           }
         ]
       })
