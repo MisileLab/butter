@@ -24,8 +24,8 @@
       }
     }
     const myvad = await MicVAD.new({
-      workletURL: './vad.worklet.bundle.min.js',
-      modelURL: './silero_vad.onnx',
+      baseAssetPath: "/",
+      onnxWASMBasePath: "/",
       onSpeechEnd: (audio) => {
         console.log('speech end')
         const d = utils.arrayBufferToBase64(utils.encodeWAV(audio));
