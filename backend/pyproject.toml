@@ -7,7 +7,7 @@ dependencies = [
   "beautifulsoup4==4.12.3",
   "duckduckgo-search==6.3.7",
   "elevenlabs==1.13.2",
-  "fastapi[standard]==0.115.5",
+  "fastapi[standard]==0.115.6",
   "langchain-openai==0.2.11",
   "loguru==0.7.2",
   "lxml==5.3.0",
