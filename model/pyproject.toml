@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "model of butter"
 requires-python = "==3.13.0"
 dependencies = [
-  "httpx==0.28.0",
+  "httpx==0.28.1",
   "httpx-ws==0.6.2",
   "loguru==0.7.3",
   "numpy==2.1.3",
