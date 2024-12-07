@@ -94,7 +94,7 @@ wheels = [
 
 [[package]]
 name = "httpx-ws"
-version = "0.6.2"
+version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -102,9 +102,9 @@ dependencies = [
     { name = "httpx" },
     { name = "wsproto" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/71/55/4ee9f216bfda692e9739823e73765b7f66f088e6ac1de5fece14e87ca153/httpx_ws-0.6.2.tar.gz", hash = "sha256:b07446b9067a30f1012fa9851fdfd14207012cd657c485565884f90553d0854c", size = 23430 }
+sdist = { url = "https://files.pythonhosted.org/packages/90/46/ca3220e68ced5256240d4388caa50cce4390d9ff41bb77a4682767384de2/httpx_ws-0.7.0.tar.gz", hash = "sha256:352843c3a37bd7d807bb3fd63130d30f8f7d533bfc921a409bd25edd00d26029", size = 23987 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b2/36/69a5a5da21f420ac67aaeafd963713db829ab1be307b0c5cbf80d846144b/httpx_ws-0.6.2-py3-none-any.whl", hash = "sha256:24f87427acb757ada200aeab016cc429fa0bc71b0730429c37634867194e305c", size = 14138 },
+    { url = "https://files.pythonhosted.org/packages/e5/33/27933b5fa7c4331af7639dd80da7cb7b560d74431bf578fa570bc3bf013d/httpx_ws-0.7.0-py3-none-any.whl", hash = "sha256:4e888b8f662862cfafc3bbcf7d851105da4a6d50088d3168909c209762b6ea32", size = 14270 },
 ]
 
 [[package]]
@@ -145,7 +145,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "httpx", specifier = "==0.28.1" },
-    { name = "httpx-ws", specifier = "==0.6.2" },
+    { name = "httpx-ws", specifier = "==0.7.0" },
     { name = "loguru", specifier = "==0.7.3" },
     { name = "numpy", specifier = "==2.1.3" },
     { name = "pydantic", specifier = "==2.10.3" },
@@ -185,7 +185,7 @@ name = "opencv-python"
 version = "4.10.0.84"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version == '3.13.1'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/4a/e7/b70a2d9ab205110d715906fc8ec83fbb00404aeb3a37a0654fdb68eb0c8c/opencv-python-4.10.0.84.tar.gz", hash = "sha256:72d234e4582e9658ffea8e9cae5b63d488ad06994ef12d81dc303b17472f3526", size = 95103981 }
 wheels = [
