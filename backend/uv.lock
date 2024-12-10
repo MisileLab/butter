@@ -98,7 +98,7 @@ requires-dist = [
     { name = "lxml", specifier = "==5.3.0" },
     { name = "mem0ai", specifier = "==0.1.34" },
     { name = "minio", specifier = "==7.2.12" },
-    { name = "openai", specifier = "==1.57.1" },
+    { name = "openai", specifier = "==1.57.2" },
     { name = "orjson", specifier = "==3.10.12" },
     { name = "python-multipart", specifier = "==0.0.19" },
     { name = "selenium", specifier = "==4.27.1" },
@@ -701,7 +701,7 @@ wheels = [
 
 [[package]]
 name = "openai"
-version = "1.57.1"
+version = "1.57.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -713,9 +713,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/42/73/6e2a57b6ea92c8a786d775877c711f067f1d944dc9b1e6bbd166780c8e93/openai-1.57.1.tar.gz", hash = "sha256:a95f22e04ab3df26e64a15d958342265e802314131275908b3b3e36f8c5d4377", size = 315554 }
+sdist = { url = "https://files.pythonhosted.org/packages/a9/b6/9a404e1d1043cabbffb020f9d850a44a31f30f284444a528d9a1f0eec9df/openai-1.57.2.tar.gz", hash = "sha256:5f49fd0f38e9f2131cda7deb45dafdd1aee4f52a637e190ce0ecf40147ce8cee", size = 315752 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6b/f0/c25aab1845afc3583a808d0a9b844bb3842245d87b9791e588e6aba8ce3a/openai-1.57.1-py3-none-any.whl", hash = "sha256:3865686c927e93492d1145938d4a24b634951531c4b2769d43ca5dbd4b25d8fd", size = 389846 },
+    { url = "https://files.pythonhosted.org/packages/37/e7/95437fb676381e927d4cb3f9f8dd90ed24cfd264f572db4d395037428594/openai-1.57.2-py3-none-any.whl", hash = "sha256:f7326283c156fdee875746e7e54d36959fb198eadc683952ee05e3302fbd638d", size = 389873 },
 ]
 
 [[package]]
