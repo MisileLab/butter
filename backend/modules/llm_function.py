@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import AIMessage, ToolMessage, SystemMessage, HumanMessage
 
 from loguru import logger
-from duckduckgo_search import AsyncDDGS
+from duckduckgo_search import DDGS
 from httpx import AsyncClient, get
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
@@ -113,7 +113,7 @@ async def send_request_using_browser(url: str, question: str) -> str:
 @print_it
 async def search_internet(query: str, question: str) -> str:
   query = query.replace("\n", "")
-  tmp = await AsyncDDGS().atext(query, region="ko-kr", max_results=10)
+  tmp = DDGS().text(query, region="ko-kr", max_results=10)
   res = []
   for i in tmp:
     res.append({"type": "text", "text": f"Title: {i["title"]}\ndescription: {i["body"]}\nhref: {i["href"]}"})
