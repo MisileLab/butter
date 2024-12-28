@@ -11,7 +11,7 @@ dependencies = [
   "langchain-openai==0.2.14",
   "loguru==0.7.3",
   "lxml==5.3.0",
-  "mem0ai==0.1.36",
+  "mem0ai==0.1.38",
   "minio==7.2.13",
   "openai==1.58.1",
   "orjson==3.10.12",
