@@ -94,7 +94,7 @@ wheels = [
 
 [[package]]
 name = "httpx-ws"
-version = "0.7.0"
+version = "0.7.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -102,9 +102,9 @@ dependencies = [
     { name = "httpx" },
     { name = "wsproto" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/90/46/ca3220e68ced5256240d4388caa50cce4390d9ff41bb77a4682767384de2/httpx_ws-0.7.0.tar.gz", hash = "sha256:352843c3a37bd7d807bb3fd63130d30f8f7d533bfc921a409bd25edd00d26029", size = 23987 }
+sdist = { url = "https://files.pythonhosted.org/packages/a2/bc/ec7e7ac18dc6303187c7999c4b224bd3214745cd757b85ca14c8523c2a7f/httpx_ws-0.7.1.tar.gz", hash = "sha256:72f355d4b9b16d8fa59e5e68efdfcb1f3c7dca944901b373791245c8f67f9f95", size = 24114 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e5/33/27933b5fa7c4331af7639dd80da7cb7b560d74431bf578fa570bc3bf013d/httpx_ws-0.7.0-py3-none-any.whl", hash = "sha256:4e888b8f662862cfafc3bbcf7d851105da4a6d50088d3168909c209762b6ea32", size = 14270 },
+    { url = "https://files.pythonhosted.org/packages/00/5b/a27d1c8eda1fdce8c0668a3ea7e09bcc43986f5b306703c46b0f42d2165f/httpx_ws-0.7.1-py3-none-any.whl", hash = "sha256:7970e470840d8e6c17bd45ed4e7af06f9144a4a9decab2ff226f3ff9accb65b4", size = 14438 },
 ]
 
 [[package]]
@@ -145,7 +145,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "httpx", specifier = "==0.28.1" },
-    { name = "httpx-ws", specifier = "==0.7.0" },
+    { name = "httpx-ws", specifier = "==0.7.1" },
     { name = "loguru", specifier = "==0.7.3" },
     { name = "numpy", specifier = "==2.2.1" },
     { name = "pydantic", specifier = "==2.10.4" },
