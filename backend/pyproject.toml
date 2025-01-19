@@ -14,7 +14,7 @@ dependencies = [
   "mem0ai==0.1.45",
   "minio==7.2.15",
   "openai==1.59.8",
-  "orjson==3.10.14",
+  "orjson==3.10.15",
   "python-multipart==0.0.20",
   "selenium==4.27.1",
   "tomli==2.2.1",
