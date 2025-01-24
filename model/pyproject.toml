@@ -8,6 +8,6 @@ dependencies = [
   "httpx-ws==0.7.1",
   "loguru==0.7.3",
   "numpy==2.2.2",
-  "pydantic==2.10.5",
+  "pydantic==2.10.6",
   "pyvts==0.3.3"
 ]
