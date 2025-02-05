@@ -91,7 +91,7 @@ dependencies = [
 requires-dist = [
     { name = "beautifulsoup4", specifier = "==4.13.3" },
     { name = "duckduckgo-search", specifier = "==7.3.0" },
-    { name = "elevenlabs", specifier = "==1.50.6" },
+    { name = "elevenlabs", specifier = "==1.50.7" },
     { name = "fastapi", extras = ["standard"], specifier = "==0.115.8" },
     { name = "langchain-openai", specifier = "==0.3.3" },
     { name = "loguru", specifier = "==0.7.3" },
@@ -238,7 +238,7 @@ wheels = [
 
 [[package]]
 name = "elevenlabs"
-version = "1.50.6"
+version = "1.50.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
@@ -248,9 +248,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "websockets" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fa/af/1dc8e57b95e188c53820a17cf9ec2d6ab60ee88bc65f8997a96c3f7c128a/elevenlabs-1.50.6.tar.gz", hash = "sha256:4a34756f3fa6a9a1cdd72034fdd33b3dcd5d52917a6da5f63112a2a35ae6f17b", size = 104318 }
+sdist = { url = "https://files.pythonhosted.org/packages/0f/41/aa0e65c943aceeaf6ef02eab97e4c21c768cc69589f51c6dcb307cae9a77/elevenlabs-1.50.7.tar.gz", hash = "sha256:07526ef7a194104e1c91e22ba65b55d061b7a1f7d310170915258ae32fde3467", size = 114950 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/47/58/f80e2ca019e8aaa6ddc10de689233178c2c23674991289358305c0a69735/elevenlabs-1.50.6-py3-none-any.whl", hash = "sha256:71b3f38c6a27a8642ac7382bc8e8c16d505b09184eb1135373ecc51f889ccb83", size = 236199 },
+    { url = "https://files.pythonhosted.org/packages/39/92/6096e18b5d673195fb5f702f9d2cc881595d876659db4e025760faed9b42/elevenlabs-1.50.7-py3-none-any.whl", hash = "sha256:3b75a28e6e81d677d2525f51713167f521bc0dab062984d7a3d1e29411ae424a", size = 264723 },
 ]
 
 [[package]]
