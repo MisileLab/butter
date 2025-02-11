@@ -6,7 +6,7 @@ requires-python = "==3.13.1"
 dependencies = [
   "beautifulsoup4==4.13.3",
   "duckduckgo-search==7.3.2",
-  "elevenlabs==1.50.7",
+  "elevenlabs==1.51.0",
   "fastapi[standard]==0.115.8",
   "langchain-openai==0.3.5",
   "loguru==0.7.3",
