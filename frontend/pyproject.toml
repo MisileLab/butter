@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Frontend of butter"
 requires-python = "==3.13.1"
 dependencies = [
-  "gradio==5.15.0",
+  "gradio==5.16.0",
   "httpx==0.28.1",
   "loguru==0.7.3"
 ]
