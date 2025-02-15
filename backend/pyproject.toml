@@ -8,7 +8,7 @@ dependencies = [
   "duckduckgo-search==7.3.2",
   "elevenlabs==1.51.0",
   "fastapi[standard]==0.115.8",
-  "langchain-openai==0.3.5",
+  "langchain-openai==0.3.6",
   "loguru==0.7.3",
   "lxml==5.3.1",
   "mem0ai==0.1.49",
